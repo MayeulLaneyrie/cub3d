@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 17:45:48 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:12:39 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@
 # define FOV 90
 # define PI 3.14159265
 
-typedef enum	e_or
+typedef enum	e_face
 {
 	no,
 	so,
 	ea,
 	we
-}	t_or;
+}	t_face;
 
-typedef	struct	t_hit
+typedef	struct	s_hit
 {
 	double	dist;
-	t_or	orient;
-}
+	t_or	face;
+}	t_hit;
 
 typedef struct s_cub	t_cub;
 struct					s_cub
