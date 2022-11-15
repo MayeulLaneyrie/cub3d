@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 15:37:55 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:59:30 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ struct					s_cub
 	int		c;
 	char	**map;
 	int		flmap;
+	double	pos[2];
 	double	posx;
 	double	posy;
 };
