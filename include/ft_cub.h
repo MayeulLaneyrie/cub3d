@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 16:26:29 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:57:36 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@
 # define FOV 90
 # define PI 3.14159265
 
+typedef enum	e_dir
+{
+	no,
+	so,
+	ea,
+	we
+}	t_dir;
+
+
+
 typedef struct s_cub	t_cub;
 struct					s_cub
 {
@@ -46,8 +56,10 @@ struct					s_cub
 	char	**map;
 	int		flmap;
 	double	pos[2];
+	double	a;
 	double	posx;
 	double	posy;
+	t_disp	*d;
 };
 
 int		get_next_line(int fd, char **line);
@@ -62,6 +74,8 @@ void	ft_map(char *str, t_cub *cub);
 int		check_cub(char *str, t_cub *cub);
 
 void	ft_init(t_cub *cub);
+
+int		frame(t_cub *cub);
 
 /*
 **	vect_op.c: -----------------------------------------------------------------
