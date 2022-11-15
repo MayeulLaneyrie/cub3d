@@ -1,0 +1,200 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
+/*   Updated: 2022/11/15 13:20:32 by shamizi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_cub.h"
+
+void	ft_check_fc(char *str, t_cub *cub)
+{
+	int	i;
+	int	nb;
+	int	virgule;
+
+	i = 1;
+	nb = 0;
+	virgule = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != ',' && !(str[i] >= '0' && str[i] <= '9'))
+			cub->error = 1;
+		if (str[i] >= '0' && str[i] <= '9' && nb == 0)
+			nb = 1;
+		if (nb == 1 && str[i] == ',')
+		{
+			virgule++;
+			nb = 0;
+		}
+		i++;
+	}
+	if (virgule != 2)
+		cub->error = 1;
+}
+
+int	ft_fc(char *str, t_cub *cub)
+{
+	int	check;
+
+	cub->fc = 0;
+	if (str[1] != ' ')
+		cub->error = 2;
+	ft_check_fc(str, cub);
+	while (str[cub->i] == ' ' || str[cub->i] == ',')
+	{
+		check = 0;
+		cub->i++;
+		while (str[cub->i] >= '0' && str[cub->i] <= '9')
+		{
+			cub->fc = cub->fc * 10 + str[cub->i] - 48;
+			check = check * 10 + str[cub->i] - 48;
+			cub->i++;
+		}
+		if (check > 255 || check < 0)
+			cub->error = 2;
+	}
+	return (cub->fc);
+}
+
+void	ft_color(char **str, t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	cub->i = 1;
+	if (cub->nbligne > 0 && (cub->no == NULL || cub->so == NULL
+			|| cub->ea == NULL || cub->we == NULL))
+		cub->error = 3;
+	if (*str[i] == 'F')
+		cub->f = ft_fc(*str, cub);
+	else if (*str[i] == 'C')
+		cub->c = ft_fc(*str, cub);
+}
+
+void	ft_path(char *str, t_cub *cub, char **texture, int i)
+{
+	int	j;
+
+	j = 0;
+	if (*texture != NULL)
+		cub->error = 4;
+	while (str[i] && str[i] != '.')
+	{
+		if (str[i] != ' ' && str[i] != '.')
+			cub->error = 4;
+		i++;
+	}
+	if (!(*texture = (char *)(malloc(sizeof(char) * (ft_strlen(str) + 1)))))
+		cub->error = 4;
+	while (str[i])
+	{
+		(*texture)[j] = str[i];
+		i++;
+		j++;
+	}
+	(*texture)[j] = '\0';
+}
+
+void	ft_texture(char *str, t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == 'N' && str[i + 1] == 'O')
+		ft_path(str, cub, &cub->no, 2);
+	else if (str[i] == 'S' && str[i + 1] == 'O')
+		ft_path(str, cub, &cub->so, 2);
+	else if (str[i] == 'E' && str[i + 1] == 'A')
+		ft_path(str, cub, &cub->ea, 2);
+	else if (str[i] == 'W' && str[i + 1] == 'E')
+		ft_path(str, cub, &cub->we, 2);
+}
+
+void	ft_parsing(char *fichier, t_cub *cub)
+{
+	int		fd;
+	int		ret;
+	char	*str;
+
+	ret = 1;
+	str = NULL;
+	if ((fd = open(fichier, O_DIRECTORY)) != -1)
+		ft_error("IS A DIRECTORY\n", 15);
+	if ((fd = open(fichier, O_RDONLY)) == -1)
+		ft_error("INVALIDE .CUB\n", 14);
+	while (ret != 0)
+	{
+		ret = get_next_line(fd, &str);
+		if (cub->error != 0)
+			ft_error("erreur de parsing\n", 18);
+		ft_color(&str, cub);
+		ft_texture(str, cub);
+		ft_map(str, cub);
+		free(str);
+	}
+	close (fd);
+	if (cub->nbligne == 0)
+		ft_error("pas de map\n", 11);
+	stock_map(fichier, cub);
+}
+
+int	check_cub(char *str, t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	while (str[i] != '.')
+	{
+		if (i == 0)
+		{
+			ft_error("nom de fichier invalide\n", 24);
+			return (0);
+		}
+		i--;
+	}
+	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3]
+		== 'b' && str[i + 4] == '\0')
+		ft_parsing(str, cub);
+	else
+		ft_error("nom de fichier invalide\n", 24);
+	return (0);
+}
+
+void	ft_init(t_cub *cub)
+{
+	cub->i = 0;
+	cub->error = 0;
+	cub->fc = 0;
+	cub->nbligne = 0;
+	cub->no = NULL;
+	cub->so = NULL;
+	cub->ea = NULL;
+	cub->we = NULL;
+	cub->f = 0;
+	cub->c = 0;
+	cub->posx = 0;
+	cub->posy = 0;
+}
+
+int	main(int argc, char **argv)
+{
+	t_cub	*cub;
+
+	cub = malloc(sizeof(*cub));
+	ft_init(cub);
+	if (argc == 2)
+	{
+		check_cub(argv[1], cub);
+	}
+	else
+		write(1, "Error\nARGUMENTS INVALIDES\n", 30);
+	return (0);
+}
