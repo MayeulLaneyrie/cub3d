@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:43 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:37:55 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define WIN_H 480
 # define WIN_W 640
 
+# define FOV 90
+# define PI 3.14159265
+
 typedef struct s_cub	t_cub;
 struct					s_cub
 {
@@ -42,8 +45,8 @@ struct					s_cub
 	int		c;
 	char	**map;
 	int		flmap;
-	int		posx;
-	int		posy;
+	double	posx;
+	double	posy;
 };
 
 int		get_next_line(int fd, char **line);
