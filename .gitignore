@@ -2,6 +2,7 @@
 *.a
 *.swp
 *.txt
+src/*.swp
 
 a.out
 cub3D

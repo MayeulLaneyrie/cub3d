@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/15 14:52:47 by mlaneyri         ###   ########.fr        #
+#    Updated: 2022/11/15 16:23:39 by mlaneyri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS =	src/main.c \
 		src/get_next_line_utils.c \
 		src/parsemap.c \
 		src/parsing.c \
+		src/vect_op.c \
 		\
 		src/pcr/pcr_color_op.c \
 		src/pcr/pcr_init.c \

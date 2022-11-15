@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 15:59:30 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:26:29 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct					s_cub
 };
 
 int		get_next_line(int fd, char **line);
+
 int		ft_strlen(char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memmove(void *dest, const void *src, size_t n);
@@ -61,5 +62,13 @@ void	ft_map(char *str, t_cub *cub);
 int		check_cub(char *str, t_cub *cub);
 
 void	ft_init(t_cub *cub);
+
+/*
+**	vect_op.c: -----------------------------------------------------------------
+*/
+
+int	add_v(double const *u, double const *v, double *dst);
+int	sub_v(double const *u, double const *v, double *dst);
+int	mul_rv(double t, double const *u, double *dst);
 
 #endif
