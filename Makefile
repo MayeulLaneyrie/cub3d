@@ -6,23 +6,29 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/15 12:01:09 by shamizi          ###   ########.fr        #
+#    Updated: 2022/11/15 14:52:47 by mlaneyri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
-SRCS =	error.c \
-		get_next_line.c \
-		get_next_line_utils.c \
-		parsemap.c \
-		parsing.c \
+SRCS =	src/main.c \
+		src/error.c \
+		src/get_next_line.c \
+		src/get_next_line_utils.c \
+		src/parsemap.c \
+		src/parsing.c \
+		\
+		src/pcr/pcr_color_op.c \
+		src/pcr/pcr_init.c \
+		src/pcr/pcr_line_fade.c \
+		src/pcr/pcr_line_pixel.c
 
 OBJS =$(SRCS:.c=.o)
 
 CC = clang
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx_linux
 
 MLX_FLAGS = -L ./mlx_linux -lm -lmlx -lXext -lX11
 
