@@ -1,2 +1,7 @@
 *.o
+*.a
+*.swp
+*.txt
+
+a.out
 cub3D
