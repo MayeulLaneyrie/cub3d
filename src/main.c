@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 21:40:45 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/16 22:07:35 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ int	destroy_hook(t_disp *d)
 	return (0);
 }
 
+int	check_col(t_cub *cub, double x, double y)
+{
+	if (x < 0 || y < 0 || y >= cub->nbligne
+		|| !cub->map[(int)y][(int)x] || cub->map[(int)y][(int)x] == '1')
+		return (1);
+	return (0);
+}
+
 int	key_hook(int x, t_cub *cub)
 {
 	double	step_x;
@@ -71,23 +79,31 @@ int	key_hook(int x, t_cub *cub)
 		cub->a -= PI / 110;
 	else if (x == KEY_FWD)
 	{
-		cub->pos[X] += step_x;
-		cub->pos[Y] += step_y;
+		if (!check_col(cub, cub->pos[X] + step_x, cub->pos[Y]))
+			cub->pos[X] += step_x;
+		if (!check_col(cub, cub->pos[X], cub->pos[Y] + step_y))
+			cub->pos[Y] += step_y;
 	}
 	else if (x == KEY_BWD)
 	{
-		cub->pos[X] -= step_x;
-		cub->pos[Y] -= step_y;
+		if (!check_col(cub, cub->pos[X] - step_x, cub->pos[Y]))
+			cub->pos[X] -= step_x;
+		if (!check_col(cub, cub->pos[X], cub->pos[Y] - step_y))
+			cub->pos[Y] -= step_y;
 	}
 	else if (x == KEY_RSD)
 	{
-		cub->pos[X] -= step_y;
-		cub->pos[Y] += step_x;
+		if (!check_col(cub, cub->pos[X], cub->pos[Y] - step_y))
+			cub->pos[X] -= step_y;
+		if (!check_col(cub, cub->pos[X] + step_x, cub->pos[Y]))
+			cub->pos[Y] += step_x;
 	}
 	else if (x == KEY_LSD)
 	{
-		cub->pos[X] += step_y;
-		cub->pos[Y] -= step_x;
+		if (!check_col(cub, cub->pos[X], cub->pos[Y] + step_y))
+			cub->pos[X] += step_y;
+		if (!check_col(cub, cub->pos[X] - step_x, cub->pos[Y]))
+			cub->pos[Y] -= step_x;
 	}
 	else if (x == 'x' || x == KEY_ESC)
 		mlx_loop_end(cub->d->mlx);
