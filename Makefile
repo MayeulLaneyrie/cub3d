@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/16 11:40:34 by mlaneyri         ###   ########.fr        #
+#    Updated: 2022/11/16 12:07:16 by mlaneyri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRCS =	src/main.c \
 		src/pcr/pcr_color_op.c \
 		src/pcr/pcr_init.c \
 		src/pcr/pcr_line_fade.c \
-		src/pcr/pcr_line_pixel.c
+		src/pcr/pcr_line_pixel.c \
+		src/pcr/pcr_line.c \
+		src/pcr/pcr_vline.c
 
 OBJS =$(SRCS:.c=.o)
 

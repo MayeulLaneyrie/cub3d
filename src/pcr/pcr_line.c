@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pcr_line_fade.c                                    :+:      :+:    :+:   */
+/*   pcr_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 12:02:43 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 12:04:49 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ static int	y_plus(t_disp *d, t_pcrparam p, int dx, int dy)
 
 	t = -1;
 	while (++t <= dy)
-		pcr_pixel(d, p.x1 + t * dx / dy, p.y1 + t,
-			pcr_fade((float)t / dy, p.cr1, p.cr2));
+		pcr_pixel(d, p.x1 + t * dx / dy, p.y1 + t, p.cr1);
 	return (0);
 }
 
@@ -29,8 +28,7 @@ static int	y_minus(t_disp *d, t_pcrparam p, int dx, int dy)
 
 	t = 1;
 	while (--t >= dy)
-		pcr_pixel(d, p.x1 + t * dx / dy, p.y1 + t,
-			pcr_fade((float)t / dy, p.cr1, p.cr2));
+		pcr_pixel(d, p.x1 + t * dx / dy, p.y1 + t, p.cr1);
 	return (0);
 }
 
@@ -40,8 +38,7 @@ static int	x_plus(t_disp *d, t_pcrparam p, int dx, int dy)
 
 	t = -1;
 	while (++t <= dx)
-		pcr_pixel(d, p.x1 + t, p.y1 + t * dy / dx,
-			pcr_fade((float)t / dx, p.cr1, p.cr2));
+		pcr_pixel(d, p.x1 + t, p.y1 + t * dy / dx, p.cr1);
 	return (0);
 }
 
@@ -51,12 +48,11 @@ static int	x_minus(t_disp *d, t_pcrparam p, int dx, int dy)
 
 	t = 1;
 	while (--t >= dx)
-		pcr_pixel(d, p.x1 + t, p.y1 + t * dy / dx,
-			pcr_fade((float)t / dx, p.cr1, p.cr2));
+		pcr_pixel(d, p.x1 + t, p.y1 + t * dy / dx, p.cr1);
 	return (0);
 }
 
-int	pcr_linefade(t_disp *d, t_pcrparam p)
+int	pcr_line(t_disp *d, t_pcrparam p)
 {
 	int	dx;
 	int	dy;

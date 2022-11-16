@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/08 18:09:30 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 12:07:32 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ int		abs(int x);
 
 int		pcr_fade(float t, int cr1, int cr2);
 
+int		pcr_linefade(t_disp *d, t_pcrparam p);
+
 int		pcr_line(t_disp *d, t_pcrparam p);
+
+int		pcr_vline(t_disp *d, t_pcrparam p);
 
 int		pcr_add(int cr1, int cr2);
 
