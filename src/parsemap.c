@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:30 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:43:44 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	floodfill(t_cub *cub, int x, int y, int overflow)
 		ft_error("overflow\n", 8);
 	if (cub->map[y][x] != '0' && cub->map[y][x] != '2')
 		return ;
-	if (cub->map[y][x] == 'O' || cub->map[y][x] == 'X')
+	if (cub->map[y][x] == ' ' || cub->map[y][x] == 'X')
 		return ;
 	if (cub->map[y][x] == '0')
-		cub->map[y][x] = 'O';
+		cub->map[y][x] = ' ';
 	if (cub->map[y][x] == '2')
 		cub->map[y][x] = 'X';
 	floodfill(cub, x + 1, y, overflow++);
