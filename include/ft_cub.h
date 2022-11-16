@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 17:06:55 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:42:23 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@
 
 # define X 0
 # define Y 1
+
+# define AZERTY
+
+# ifdef AZERTY
+#  define KEY_FWD 'z'
+#  define KEY_LSD 'q'
+# else
+#  define KEY_FWD 'w'
+#  define KEY_LSD 'a'
+# endif
+
+# define KEY_BWD 's'
+# define KEY_RSD 'd'
+# define KEY_RTL 0xff51
+# define KEY_RTR 0xff53
+# define KEY_ESC 0xff1b
 
 typedef enum	e_face
 {

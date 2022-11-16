@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pcr_vline.c                                        :+:      :+:    :+:   */
+/*   pcr_vhline.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 12:07:45 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:37:34 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,15 @@ int	pcr_vline(t_disp *d, t_pcrparam p)
 	t = p.y1 - 1;
 	while (++t <= p.y2)
 		pcr_pixel(d, p.x1, t, p.cr1);
+	return (0);
+}
+
+int	pcr_hline(t_disp *d, t_pcrparam p)
+{
+	int	t;
+
+	t = p.x1 - 1;
+	while (++t <= p.x2)
+		pcr_pixel(d, t, p.y1, p.cr1);
 	return (0);
 }
