@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 15:37:06 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 16:11:09 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,4 @@ void	ft_init(t_cub *cub)
 	cub->or_cam[1] = 0;
 	cub->or_plancam[0] = 0;
 	cub->or_plancam[1] = 0;
-	cub->posx = 0;
-	cub->posy = 0;
 }

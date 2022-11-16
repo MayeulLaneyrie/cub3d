@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 13:54:27 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:07:26 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ struct					s_cub
 	double	a;
 	double	or_cam[2];
 	double	or_plancam[2];
-	double	posx;
-	double	posy;
 	t_disp	*d;
 };
 

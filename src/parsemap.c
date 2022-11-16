@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:30 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 16:10:42 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	orientation_start(t_cub *cub, int i, int j)
 	if (cub->map[i][j] == 'W')
 		cub->a = 0;
 	cub->map[i][j] = '0';
-	cub->posx = j;
-	cub->posy = i;
+	cub->pos[X] = j + 0.5;
+	cub->pos[Y] = i + 0.5;
 }
 
 void	pos_start(t_cub *cub)
@@ -116,7 +116,7 @@ int	stock_map(char *fichier, t_cub *cub)
 		free(str);
 	}
 	pos_start(cub);
-	floodfill(cub, cub->posx, cub->posy, 0);
+	floodfill(cub, cub->pos[X] - 0.5, cub->pos[Y] - 0.5, 0);
 	close(fd);
 	return (0);
 }

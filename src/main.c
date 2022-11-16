@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 14:51:18 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:09:21 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	debug_cub(t_cub *cub)
 		cub->no, cub->so, cub->ea, cub->we);
 	printf("C: %x; F: %x\n\n", cub->c, cub->f);
 	printf("posx: %f; posy: %f\npos[0]: %f; pos[1]: %f\n",
-		cub->posx, cub->posy, cub->pos[0], cub->pos[1]);
-	cub->pos[X] = cub->posx + 0.5;
-	cub->pos[Y] = cub->posy + 0.5;
+		cub->pos[X], cub->pos[Y], cub->pos[0], cub->pos[1]);
+//	cub->pos[X] = cub->posx + 0.5;
+//	cub->pos[Y] = cub->posy + 0.5;
 	cub->a = PI / 3;
 	printf("a: %f\n", cub->a);
 	return (0);
