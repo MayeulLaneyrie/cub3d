@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 11:04:04 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 11:59:25 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_check_fc(char *str, t_cub *cub)
 int	ft_fc(char *str, t_cub *cub)
 {
 	int	check;
+	int n = 24;
 
 	cub->fc = 0;
 	if (str[1] != ' ')
@@ -52,8 +53,15 @@ int	ft_fc(char *str, t_cub *cub)
 		cub->i++;
 		while (str[cub->i] >= '0' && str[cub->i] <= '9')
 		{
-			cub->fc = cub->fc * 10 + str[cub->i] - 48;
+			//cub->fc = cub->fc * 10 + str[cub->i] - 48;
 			check = check * 10 + str[cub->i] - 48;
+			if (str[cub->i + 1] < '0' || str[cub->i] > '9')
+			{
+				n -= 8;
+				printf ("n : %d, check : %d\n", n, check);
+				cub->fc += check << n;
+				printf("cub-fc : %x\n", cub->fc);
+			}
 			cub->i++;
 		}
 		if (check > 255 || check < 0)
@@ -133,7 +141,10 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 	{
 		ret = get_next_line(fd, &str, 1);
 		if (cub->error != 0)
+		{
+			printf("cube error :%d\n", cub->error);
 			ft_error("erreur de parsing\n", 18);
+		}
 		ft_color(&str, cub);
 		ft_texture(str, cub);
 		ft_map(str, cub);
@@ -179,8 +190,8 @@ void	ft_init(t_cub *cub)
 	cub->so = NULL;
 	cub->ea = NULL;
 	cub->we = NULL;
-	cub->f = 0;
-	cub->c = 0;
+	cub->f = -1;
+	cub->c = -1;
 	cub->map = NULL;
 	cub->flmap = 0;
 	cub->pos[0] = 0;
