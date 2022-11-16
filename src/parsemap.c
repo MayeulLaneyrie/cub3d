@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 16:19:08 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:14:17 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ void	pos_start(t_cub *cub)
 		}
 		i++;
 	}
-	if (compt != 1)
+	if (compt != 1 || cub->pos[X] == 0)
+	{
+		ft_error("Nombre de position de depart incorect\n", 38);
 		cub->error = 9;
+	}
 }
 
 int	ft_stock_map(char *str, t_cub *cub)
