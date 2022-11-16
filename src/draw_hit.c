@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 16:03:55 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 16:32:46 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	draw_hitline(t_cub *cub, t_hit hit, t_pcrparam p)
 		end = WIN_H - 1;
 	if(hit.face == no)
 		p.cr1 = 8462323; //couleur du mur a remplacer par path to texture
-	else if (hit.face == so)
+	if (hit.face == so)
 		p.cr1 = 2352121;
-	else if (hit.face == ea)
+	if (hit.face == ea)
 		p.cr1 = 123123132;
-	else if (hit.face == we)
+	if (hit.face == we)
 		p.cr1 = 606060;
 	p.y1 = start; // debut de la ligne de pixel
 	p.y2 = end; // fin de la ligne de pixel
