@@ -6,11 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/11/16 16:09:21 by shamizi          ###   ########.fr       */
-=======
-/*   Updated: 2022/11/16 16:07:16 by mlaneyri         ###   ########.fr       */
->>>>>>> 1ae18a3eff6a48b4e927ad0b8cf17886b69abaeb
+/*   Updated: 2022/11/16 16:18:43 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +50,8 @@ int	debug_cub(t_cub *cub)
 		cub->no, cub->so, cub->ea, cub->we);
 	printf("C: %x; F: %x\n\n", cub->c, cub->f);
 	printf("posx: %f; posy: %f\npos[0]: %f; pos[1]: %f\n",
-<<<<<<< HEAD
 		cub->pos[X], cub->pos[Y], cub->pos[0], cub->pos[1]);
-//	cub->pos[X] = cub->posx + 0.5;
-//	cub->pos[Y] = cub->posy + 0.5;
 	cub->a = PI / 3;
-=======
-		cub->posx, cub->posy, cub->pos[0], cub->pos[1]);
->>>>>>> 1ae18a3eff6a48b4e927ad0b8cf17886b69abaeb
 	printf("a: %f\n", cub->a);
 	return (0);
 }
