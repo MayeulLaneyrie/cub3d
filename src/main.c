@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 17:16:47 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:18:36 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ int	key_hook(int x, t_cub *cub)
 		cub->pos[X] += cub->or_cam[Y] / 20;
 		cub->pos[Y] -= cub->or_cam[X] / 20;
 	}
-	else if (x == 0x78)
+	else if (x == 0x78 || x == 0xff1b)
 		mlx_loop_end(cub->d->mlx);
+	printf("%x\n", x);
 	return (frame(cub));
 }
 
