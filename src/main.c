@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 16:23:11 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:34:59 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ int	destroy_hook(t_disp *d)
 	return (0);
 }
 
+int	key_hook(int x, t_cub *cub)
+{
+	if (x == 0xff51)
+		cub->a += PI / 120;
+	if (x == 0xff53)
+		cub->a -= PI / 120;
+	return (frame(cub));
+}
+
 int	debug_cub(t_cub *cub)
 {
 	printf("%d lines\n\n", cub->nbligne);
@@ -53,13 +62,6 @@ int	debug_cub(t_cub *cub)
 		cub->pos[X], cub->pos[Y], cub->pos[0], cub->pos[1]);
 	cub->a = PI / 3;
 	printf("a: %f\n", cub->a);
-	return (0);
-}
-
-int	truc(t_cub *cub)
-{
-	cub->a += PI / 500;
-	frame(cub);
 	return (0);
 }
 
@@ -81,7 +83,7 @@ int	main(int argc, char **argv)
 		return (-2);
 	mlx_hook(cub->d->win, 17, 0L, &destroy_hook, cub->d);
 	mlx_hook(cub->d->win, 12, 1L << 15, &frame, cub);
-	mlx_loop_hook(cub->d->mlx, &truc, cub);
+	mlx_hook(cub->d->win, 2, 1L << 0, &key_hook, cub);
 	mlx_loop(cub->d->mlx);
 	pcr_destroy_disp(cub->d);
 
