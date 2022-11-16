@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 10:31:45 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 11:39:13 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include "pcr.h"
 
@@ -41,7 +42,7 @@ typedef enum	e_face
 typedef	struct	s_hit
 {
 	double	dist;
-//	t_or	face;
+	t_face	face;
 }	t_hit;
 
 typedef struct s_cub	t_cub;
@@ -82,6 +83,10 @@ int		check_cub(char *str, t_cub *cub);
 void	ft_init(t_cub *cub);
 
 int		frame(t_cub *cub);
+
+t_hit	trace_ray(t_cub *cub, double *ray);
+
+int		draw_hit(t_cub *cub, t_hit hit, int x);
 
 /*
 **	vect_op.c: -----------------------------------------------------------------

@@ -6,34 +6,31 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 17:24:26 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 11:42:07 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-int	draw(t_disp *d)
+int	frame(t_cub *cub)
 {
-	static double	var = 0.01;
-	static double	t = 0;
-	int				n;
-	int				p;
+	double	ray[2];
+	t_hit	hit;
+	int		x;
 
-	n = 0;
-	while (n < WIN_H)
+	cub->or_cam[0] = cos(cub->a);
+	cub->or_cam[1] = sin(cub->a);
+	cub->or_plancam[0] = cub->or_cam[1];
+	cub->or_plancam[1] = -cub->or_cam[0];
+	x = -1;
+	while (++x < WIN_W)
 	{
-		p = n % 2;
-		while (p < WIN_W)
-		{
-			pcr_pixel(d, p, n, pcr_fade(t, 0xff0000, 0x0000ff));
-			p += 8;
-		}
-		n++;
+		ray[0] = cub->or_cam[0] + (-1 + 2 * x / WIN_W) * cub->or_plancam[0];
+		ray[1] = cub->or_cam[1] + (-1 + 2 * x / WIN_W) * cub->or_plancam[1];
+		hit = trace_ray(cub, ray);
+		draw_hit(cub, hit, x);
 	}
-	t += var;
-	if (t > 1 || t < 0)
-		var = -var;
-	pcr_display(d);
+	pcr_display(cub->d);
 	return (0);
 }
 
@@ -74,8 +71,8 @@ int	main(int argc, char **argv)
 	if (!cub->d)
 		return (-2);
 	mlx_hook(cub->d->win, 17, 0L, &destroy_hook, cub->d);
-	mlx_hook(cub->d->win, 12, 1L << 15, &draw, cub->d);
-	mlx_loop_hook(cub->d->mlx, &draw, cub->d);
+	mlx_hook(cub->d->win, 12, 1L << 15, &frame, cub);
+	mlx_loop_hook(cub->d->mlx, &frame, cub);
 	mlx_loop(cub->d->mlx);
 	pcr_destroy_disp(cub->d);
 
