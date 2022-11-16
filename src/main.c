@@ -6,7 +6,11 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/16 16:09:21 by shamizi          ###   ########.fr       */
+=======
+/*   Updated: 2022/11/16 16:07:16 by mlaneyri         ###   ########.fr       */
+>>>>>>> 1ae18a3eff6a48b4e927ad0b8cf17886b69abaeb
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +24,14 @@ int	frame(t_cub *cub)
 
 	cub->or_cam[X] = cos(cub->a);
 	cub->or_cam[Y] = -sin(cub->a);
-	printf("%f ;;; %f\n", cub->or_cam[X], cub->or_cam[Y]);
-	cub->or_plancam[X] = cub->or_cam[X];
-	cub->or_plancam[Y] = -cub->or_cam[Y];
+	cub->or_plancam[X] = -cub->or_cam[Y];
+	cub->or_plancam[Y] = cub->or_cam[X];
 	x = 0;
 	while (x < 640)
 	{
 		ray[X] = cub->or_cam[X] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[0];
 		ray[Y] = cub->or_cam[Y] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[1];
 		trace_ray(cub, ray, &hit);
-		//printf("%d %f\n", hit.face, hit.dist);
 		draw_hit(cub, hit, x);
 		x += 1;
 	}
@@ -52,17 +54,21 @@ int	debug_cub(t_cub *cub)
 		cub->no, cub->so, cub->ea, cub->we);
 	printf("C: %x; F: %x\n\n", cub->c, cub->f);
 	printf("posx: %f; posy: %f\npos[0]: %f; pos[1]: %f\n",
+<<<<<<< HEAD
 		cub->pos[X], cub->pos[Y], cub->pos[0], cub->pos[1]);
 //	cub->pos[X] = cub->posx + 0.5;
 //	cub->pos[Y] = cub->posy + 0.5;
 	cub->a = PI / 3;
+=======
+		cub->posx, cub->posy, cub->pos[0], cub->pos[1]);
+>>>>>>> 1ae18a3eff6a48b4e927ad0b8cf17886b69abaeb
 	printf("a: %f\n", cub->a);
 	return (0);
 }
 
 int	truc(t_cub *cub)
 {
-	cub->a += PI / 1000;
+	cub->a += PI / 500;
 	frame(cub);
 	return (0);
 }
