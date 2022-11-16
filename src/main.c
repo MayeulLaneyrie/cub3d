@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 11:42:07 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:55:41 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ int	frame(t_cub *cub)
 	t_hit	hit;
 	int		x;
 
-	cub->or_cam[0] = cos(cub->a);
-	cub->or_cam[1] = sin(cub->a);
-	cub->or_plancam[0] = cub->or_cam[1];
-	cub->or_plancam[1] = -cub->or_cam[0];
+	cub->or_cam[X] = cos(cub->a);
+	cub->or_cam[Y] = -sin(cub->a);
+	cub->or_plancam[X] = cub->or_cam[X];
+	cub->or_plancam[Y] = -cub->or_cam[Y];
 	x = -1;
 	while (++x < WIN_W)
 	{
-		ray[0] = cub->or_cam[0] + (-1 + 2 * x / WIN_W) * cub->or_plancam[0];
-		ray[1] = cub->or_cam[1] + (-1 + 2 * x / WIN_W) * cub->or_plancam[1];
-		hit = trace_ray(cub, ray);
+		ray[X] = cub->or_cam[X] + (-1 + 2 * x / WIN_W) * cub->or_plancam[0];
+		ray[Y] = cub->or_cam[Y] + (-1 + 2 * x / WIN_W) * cub->or_plancam[1];
+		trace_ray(cub, ray, &hit);
 		draw_hit(cub, hit, x);
 	}
 	pcr_display(cub->d);

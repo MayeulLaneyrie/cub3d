@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/08 15:17:31 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 12:58:09 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ int	abs(int x)
 	if (x > 0)
 		return (x);
 	return (-x);
+}
+
+int	fsgn(double d)
+{
+	if (d < 0)
+		return (-1);
+	return (1);
 }
 
 int	pcr_fade(float t, int cr1, int cr2)
