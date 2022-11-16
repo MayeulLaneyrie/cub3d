@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 13:56:54 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:01:05 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_hitline(t_cub *cub, t_hit hit, t_pcrparam p)
 	(void)hit;
 	int start;
 	int end;
-	int lineHeight = (int)(WIN_H / hit->dist);
+	int lineHeight = (int)(WIN_H / hit.dist);
 
 	start = -lineHeight / 2 + WIN_H / 2;
 	if (start < 0)

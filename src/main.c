@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 13:59:36 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 14:51:18 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@ int	frame(t_cub *cub)
 
 	cub->or_cam[X] = cos(cub->a);
 	cub->or_cam[Y] = -sin(cub->a);
+	printf("%f ;;; %f\n", cub->or_cam[X], cub->or_cam[Y]);
 	cub->or_plancam[X] = cub->or_cam[X];
 	cub->or_plancam[Y] = -cub->or_cam[Y];
-	x = -1;
-	while (++x < WIN_W)
+	x = 0;
+	while (x < 640)
 	{
-		ray[X] = cub->or_cam[X] + (-1 + 2 * x / WIN_W) * cub->or_plancam[0];
-		ray[Y] = cub->or_cam[Y] + (-1 + 2 * x / WIN_W) * cub->or_plancam[1];
+		ray[X] = cub->or_cam[X] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[0];
+		ray[Y] = cub->or_cam[Y] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[1];
 		trace_ray(cub, ray, &hit);
+		//printf("%d %f\n", hit.face, hit.dist);
 		draw_hit(cub, hit, x);
+		x += 1;
 	}
 	pcr_display(cub->d);
 	return (0);
@@ -50,7 +53,17 @@ int	debug_cub(t_cub *cub)
 	printf("C: %x; F: %x\n\n", cub->c, cub->f);
 	printf("posx: %f; posy: %f\npos[0]: %f; pos[1]: %f\n",
 		cub->posx, cub->posy, cub->pos[0], cub->pos[1]);
+	cub->pos[X] = cub->posx + 0.5;
+	cub->pos[Y] = cub->posy + 0.5;
+	cub->a = PI / 3;
 	printf("a: %f\n", cub->a);
+	return (0);
+}
+
+int	truc(t_cub *cub)
+{
+	cub->a += PI / 1000;
+	frame(cub);
 	return (0);
 }
 
@@ -72,7 +85,7 @@ int	main(int argc, char **argv)
 		return (-2);
 	mlx_hook(cub->d->win, 17, 0L, &destroy_hook, cub->d);
 	mlx_hook(cub->d->win, 12, 1L << 15, &frame, cub);
-	mlx_loop_hook(cub->d->mlx, &frame, cub);
+	mlx_loop_hook(cub->d->mlx, &truc, cub);
 	mlx_loop(cub->d->mlx);
 	pcr_destroy_disp(cub->d);
 
