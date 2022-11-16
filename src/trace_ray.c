@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:36:56 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 16:06:40 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:26:45 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ t_hit	*trace_ray(t_cub *cub, double *ray, t_hit *ret)
 	if (i)
 		ret->face = step[i] < 0;
 	else
-		ret->face = 2 + step[i] > 0;
+		ret->face = 2 + (step[i] > 0);
 	return (ret);
 }
