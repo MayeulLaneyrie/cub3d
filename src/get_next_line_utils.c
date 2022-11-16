@@ -6,13 +6,13 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 13:35:03 by shamizi           #+#    #+#             */
-/*   Updated: 2021/04/14 14:42:27 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:19:58 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int		i;
 
@@ -43,13 +43,28 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	return (dest);
 }
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char			str[n];
+	unsigned int		i;
+	const unsigned char	*src_char;
+	unsigned char		*dst_char;
 
-	ft_memcpy(str, src, n);
-	ft_memcpy(dest, str, n);
-	return (dest);
+	i = 0;
+	src_char = src;
+	dst_char = dst;
+	if (src == dst)
+		return (dst);
+	while (src > dst && i < len)
+	{
+		dst_char[i] = src_char[i];
+		i++;
+	}
+	while (src < dst && i < len)
+	{
+		dst_char[len - i - 1] = src_char[len - i - 1];
+		i++;
+	}
+	return (dst);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -64,7 +79,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s1_len = ft_strlen((char *)s1);
 	s2_len = ft_strlen((char *)s2);
 	s_total = s1_len + s2_len;
-	if (!(str = malloc(sizeof(char) * (s_total + 1))))
+	str = malloc(sizeof(char) * (s_total + 1));
+	if (!str)
 		return (0);
 	ft_memmove(str, s1, s1_len);
 	ft_memmove(str + s1_len, s2, s2_len);

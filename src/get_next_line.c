@@ -6,13 +6,13 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 16:56:55 by shamizi           #+#    #+#             */
-/*   Updated: 2021/04/21 16:20:51 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:19:36 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-int		end_of_line(char *str)
+int	end_of_line(char *str)
 {
 	int			i;
 
@@ -38,7 +38,8 @@ char	*ft_write_line(char *str)
 		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (!(res = malloc(sizeof(char) * (i + 1))))
+	res = malloc(sizeof(char) * (i + 1));
+	if (!res)
 		return (0);
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -67,7 +68,8 @@ char	*ft_left(char *str)
 		free(str);
 		return (0);
 	}
-	if (!(res = malloc(sizeof(char) * ((ft_strlen(str) - i) + 1))))
+	res = malloc(sizeof(char) * ((ft_strlen(str) - i) + 1));
+	if (!res)
 		return (0);
 	i++;
 	while (str[i])
@@ -77,20 +79,20 @@ char	*ft_left(char *str)
 	return (res);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line, int res)
 {
-	int			res;
 	char		*buff;
 	static char	*saved;
 
-	res = 1;
 	if (BUFFER_SIZE <= 0 || !line || fd < 0)
 		return (-1);
-	if (!(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
 		return (-1);
 	while (res != 0 && !end_of_line(saved))
 	{
-		if ((res = read(fd, buff, BUFFER_SIZE)) == -1)
+		res = read(fd, buff, BUFFER_SIZE);
+		if (res == -1)
 		{
 			free(buff);
 			return (-1);

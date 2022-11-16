@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 14:44:13 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 10:46:57 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	ft_path(char *str, t_cub *cub, char **texture, int i)
 			cub->error = 4;
 		i++;
 	}
-	if (!(*texture = (char *)(malloc(sizeof(char) * (ft_strlen(str) + 1)))))
+	*texture = (char *)(malloc(sizeof(char) * (ft_strlen(str) + 1)));
+	if (!*texture)
 		cub->error = 4;
 	while (str[i])
 	{
@@ -116,21 +117,21 @@ void	ft_texture(char *str, t_cub *cub)
 		ft_path(str, cub, &cub->we, 2);
 }
 
-void	ft_parsing(char *fichier, t_cub *cub)
+void	ft_parsing(char *fichier, t_cub *cub, int ret)
 {
 	int		fd;
-	int		ret;
 	char	*str;
 
-	ret = 1;
 	str = NULL;
-	if ((fd = open(fichier, O_DIRECTORY)) != -1)
+	fd = open(fichier, O_DIRECTORY);
+	if (fd != -1)
 		ft_error("IS A DIRECTORY\n", 15);
-	if ((fd = open(fichier, O_RDONLY)) == -1)
+	fd = open(fichier, O_RDONLY);
+	if (fd == -1)
 		ft_error("INVALIDE .CUB\n", 14);
 	while (ret != 0)
 	{
-		ret = get_next_line(fd, &str);
+		ret = get_next_line(fd, &str, 1);
 		if (cub->error != 0)
 			ft_error("erreur de parsing\n", 18);
 		ft_color(&str, cub);
@@ -162,7 +163,7 @@ int	check_cub(char *str, t_cub *cub)
 	}
 	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3]
 		== 'b' && str[i + 4] == '\0')
-		ft_parsing(str, cub);
+		ft_parsing(str, cub, 1);
 	else
 		ft_error("nom de fichier invalide\n", 24);
 	return (0);

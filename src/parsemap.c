@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 13:13:51 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:37:45 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	ft_stock_map(char *str, t_cub *cub)
 
 	j = 0;
 	cub->map[i] = NULL;
-	if (!(cub->map[i] = malloc(sizeof(char) * (ft_strlen(str) + 1))))
+	cub->map[i] = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!cub->map[i])
 		return (0);
 	while (str[j])
 	{
@@ -91,11 +92,12 @@ int	stock_map(char *fichier, t_cub *cub)
 
 	res = 1;
 	fd = open(fichier, O_RDONLY);
-	if (!(cub->map = malloc(sizeof(char *) * cub->nbligne)))
+	cub->map = malloc(sizeof(char *) * cub->nbligne);
+	if (!cub->map)
 		return (0);
 	while (res != 0)
 	{
-		res = get_next_line(fd, &str);
+		res = get_next_line(fd, &str, 1);
 		if (str[0] == ' ' || str[0] == '1' || str[0] == '0' || str[0] == '2')
 			ft_stock_map(str, cub);
 		free(str);
