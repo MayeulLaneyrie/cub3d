@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 12:07:26 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:37:06 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,8 @@ void	ft_path(char *str, t_cub *cub, char **texture, int i)
 	j = 0;
 	if (*texture != NULL)
 		cub->error = 4;
-	while (str[i] && str[i] != '.')
-	{
-		if (str[i] != ' ' && str[i] != '.')
-			cub->error = 4;
+	while (str[i] && str[i] == ' ')
 		i++;
-	}
 	*texture = (char *)(malloc(sizeof(char) * (ft_strlen(str) + 1)));
 	if (!*texture)
 		cub->error = 4;
