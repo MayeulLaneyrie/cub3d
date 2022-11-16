@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 16:07:26 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:06:55 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 
 # define BUFFER_SIZE 10000
 
-# define WIN_H 480
-# define WIN_W 640
+# define WIN_H 720
+# define WIN_W 1280
 
-# define FOV 90
+# define FOV 70
 # define PI 3.14159265359
 
 # define VERY_BIG 1e30

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 16:34:59 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:16:47 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	frame(t_cub *cub)
 	cub->or_plancam[X] = -cub->or_cam[Y];
 	cub->or_plancam[Y] = cub->or_cam[X];
 	x = 0;
-	while (x < 640)
+	while (x < WIN_W)
 	{
 		ray[X] = cub->or_cam[X] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[0];
 		ray[Y] = cub->or_cam[Y] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[1];
@@ -45,8 +45,30 @@ int	key_hook(int x, t_cub *cub)
 {
 	if (x == 0xff51)
 		cub->a += PI / 120;
-	if (x == 0xff53)
+	else if (x == 0xff53)
 		cub->a -= PI / 120;
+	else if (x == 0x77)
+	{
+		cub->pos[X] += cub->or_cam[X] / 20;
+		cub->pos[Y] += cub->or_cam[Y] / 20;
+	}
+	else if (x == 0x73)
+	{
+		cub->pos[X] -= cub->or_cam[X] / 20;
+		cub->pos[Y] -= cub->or_cam[Y] / 20;
+	}
+	else if (x == 0x64)
+	{
+		cub->pos[X] -= cub->or_cam[Y] / 20;
+		cub->pos[Y] += cub->or_cam[X] / 20;
+	}
+	else if (x == 0x61)
+	{
+		cub->pos[X] += cub->or_cam[Y] / 20;
+		cub->pos[Y] -= cub->or_cam[X] / 20;
+	}
+	else if (x == 0x78)
+		mlx_loop_end(cub->d->mlx);
 	return (frame(cub));
 }
 
