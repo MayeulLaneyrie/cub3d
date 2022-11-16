@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/15 21:12:39 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/16 10:31:45 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef enum	e_face
 typedef	struct	s_hit
 {
 	double	dist;
-	t_or	face;
+//	t_or	face;
 }	t_hit;
 
 typedef struct s_cub	t_cub;
@@ -68,7 +68,7 @@ struct					s_cub
 	t_disp	*d;
 };
 
-int		get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line, int res);
 
 int		ft_strlen(char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
