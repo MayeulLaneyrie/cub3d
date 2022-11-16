@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 11:59:25 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:07:26 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_check_fc(char *str, t_cub *cub)
 	i = 1;
 	nb = 0;
 	virgule = 0;
+	if (str[1] != ' ')
+		cub->error = 2;
 	while (str[i])
 	{
 		if (str[i] != ' ' && str[i] != ',' && !(str[i] >= '0' && str[i] <= '9'))
@@ -41,11 +43,10 @@ void	ft_check_fc(char *str, t_cub *cub)
 int	ft_fc(char *str, t_cub *cub)
 {
 	int	check;
-	int n = 24;
+	int	n;
 
+	n = 24;
 	cub->fc = 0;
-	if (str[1] != ' ')
-		cub->error = 2;
 	ft_check_fc(str, cub);
 	while (str[cub->i] == ' ' || str[cub->i] == ',')
 	{
@@ -53,14 +54,11 @@ int	ft_fc(char *str, t_cub *cub)
 		cub->i++;
 		while (str[cub->i] >= '0' && str[cub->i] <= '9')
 		{
-			//cub->fc = cub->fc * 10 + str[cub->i] - 48;
 			check = check * 10 + str[cub->i] - 48;
 			if (str[cub->i + 1] < '0' || str[cub->i] > '9')
 			{
 				n -= 8;
-				printf ("n : %d, check : %d\n", n, check);
 				cub->fc += check << n;
-				printf("cub-fc : %x\n", cub->fc);
 			}
 			cub->i++;
 		}
@@ -141,10 +139,7 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 	{
 		ret = get_next_line(fd, &str, 1);
 		if (cub->error != 0)
-		{
-			printf("cube error :%d\n", cub->error);
 			ft_error("erreur de parsing\n", 18);
-		}
 		ft_color(&str, cub);
 		ft_texture(str, cub);
 		ft_map(str, cub);
