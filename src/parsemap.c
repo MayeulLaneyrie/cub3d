@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 11:54:53 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:09:30 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ void	floodfill(t_cub *cub, int x, int y, int overflow)
 	floodfill(cub, x, y - 1, overflow++);
 }
 
+void	orientation_start(t_cub *cub, int i, int j)
+{
+	if (cub->map[i][j] == 'N')
+		cub->a = PI / 2;
+	if (cub->map[i][j] == 'S')
+		cub->a = 3 * PI / 2;
+	if (cub->map[i][j] == 'E')
+		cub->a = PI;
+	if (cub->map[i][j] == 'W')
+		cub->a = 0;
+	cub->map[i][j] = '0';
+	cub->posx = j;
+	cub->posy = i;
+}
+
 void	pos_start(t_cub *cub)
 {
 	int	i;
@@ -48,9 +63,7 @@ void	pos_start(t_cub *cub)
 			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
 				|| cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
 			{
-				cub->map[i][j] = '0';
-				cub->posx = j;
-				cub->posy = i;
+				orientation_start(cub, i, j);
 				compt++;
 			}
 			j++;
