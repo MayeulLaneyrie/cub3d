@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 11:04:04 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:07:26 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_check_fc(char *str, t_cub *cub)
 	i = 1;
 	nb = 0;
 	virgule = 0;
+	if (str[1] != ' ')
+		cub->error = 2;
 	while (str[i])
 	{
 		if (str[i] != ' ' && str[i] != ',' && !(str[i] >= '0' && str[i] <= '9'))
@@ -41,10 +43,10 @@ void	ft_check_fc(char *str, t_cub *cub)
 int	ft_fc(char *str, t_cub *cub)
 {
 	int	check;
+	int	n;
 
+	n = 24;
 	cub->fc = 0;
-	if (str[1] != ' ')
-		cub->error = 2;
 	ft_check_fc(str, cub);
 	while (str[cub->i] == ' ' || str[cub->i] == ',')
 	{
@@ -52,8 +54,12 @@ int	ft_fc(char *str, t_cub *cub)
 		cub->i++;
 		while (str[cub->i] >= '0' && str[cub->i] <= '9')
 		{
-			cub->fc = cub->fc * 10 + str[cub->i] - 48;
 			check = check * 10 + str[cub->i] - 48;
+			if (str[cub->i + 1] < '0' || str[cub->i] > '9')
+			{
+				n -= 8;
+				cub->fc += check << n;
+			}
 			cub->i++;
 		}
 		if (check > 255 || check < 0)
@@ -179,8 +185,8 @@ void	ft_init(t_cub *cub)
 	cub->so = NULL;
 	cub->ea = NULL;
 	cub->we = NULL;
-	cub->f = 0;
-	cub->c = 0;
+	cub->f = -1;
+	cub->c = -1;
 	cub->map = NULL;
 	cub->flmap = 0;
 	cub->pos[0] = 0;
