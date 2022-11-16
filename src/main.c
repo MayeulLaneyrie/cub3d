@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 17:18:36 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:50:17 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,34 +43,39 @@ int	destroy_hook(t_disp *d)
 
 int	key_hook(int x, t_cub *cub)
 {
+	double	step_x;
+	double	step_y;
+
+	step_x = cub->or_cam[X] / 15;
+	step_y = cub->or_cam[Y] / 15;
 	if (x == 0xff51)
-		cub->a += PI / 120;
+		cub->a += PI / 110;
 	else if (x == 0xff53)
-		cub->a -= PI / 120;
+		cub->a -= PI / 110;
 	else if (x == 0x77)
 	{
-		cub->pos[X] += cub->or_cam[X] / 20;
-		cub->pos[Y] += cub->or_cam[Y] / 20;
+		cub->pos[X] += step_x;
+		cub->pos[Y] += step_y;
 	}
 	else if (x == 0x73)
 	{
-		cub->pos[X] -= cub->or_cam[X] / 20;
-		cub->pos[Y] -= cub->or_cam[Y] / 20;
+		cub->pos[X] -= step_x;
+		cub->pos[Y] -= step_y;
 	}
 	else if (x == 0x64)
 	{
-		cub->pos[X] -= cub->or_cam[Y] / 20;
-		cub->pos[Y] += cub->or_cam[X] / 20;
+		cub->pos[X] -= step_y;
+		cub->pos[Y] += step_x;
 	}
 	else if (x == 0x61)
 	{
-		cub->pos[X] += cub->or_cam[Y] / 20;
-		cub->pos[Y] -= cub->or_cam[X] / 20;
+		cub->pos[X] += step_y;
+		cub->pos[Y] -= step_x;
 	}
 	else if (x == 0x78 || x == 0xff1b)
 		mlx_loop_end(cub->d->mlx);
-	printf("%x\n", x);
-	return (frame(cub));
+	//printf("%x\n", x);
+	return (0);
 }
 
 int	debug_cub(t_cub *cub)
@@ -107,6 +112,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->d->win, 17, 0L, &destroy_hook, cub->d);
 	mlx_hook(cub->d->win, 12, 1L << 15, &frame, cub);
 	mlx_hook(cub->d->win, 2, 1L << 0, &key_hook, cub);
+	mlx_loop_hook(cub->d->mlx, &frame, cub);
 	mlx_loop(cub->d->mlx);
 	pcr_destroy_disp(cub->d);
 
