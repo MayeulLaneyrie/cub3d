@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 11:39:13 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:54:27 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@
 # define WIN_W 640
 
 # define FOV 90
-# define PI 3.14159265
+# define PI 3.14159265359
+
+# define VERY_BIG 1e30
+
+# define X 0
+# define Y 1
 
 typedef enum	e_face
 {
@@ -84,7 +89,7 @@ void	ft_init(t_cub *cub);
 
 int		frame(t_cub *cub);
 
-t_hit	trace_ray(t_cub *cub, double *ray);
+t_hit	*trace_ray(t_cub *cub, double *ray, t_hit *ret);
 
 int		draw_hit(t_cub *cub, t_hit hit, int x);
 

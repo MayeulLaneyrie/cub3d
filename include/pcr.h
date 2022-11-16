@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 13:42:18 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:59:23 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_disp	*pcr_destroy_disp(t_disp *d);
 int		pcr_pixel(t_disp *d, int x, int y, int color);
 
 int		abs(int x);
+
+int		fsgn(double d);
 
 int		pcr_fade(float t, int cr1, int cr2);
 
