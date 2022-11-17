@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 14:07:41 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:15:28 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,15 +127,15 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 	str = NULL;
 	fd = open(fichier, O_DIRECTORY);
 	if (fd != -1)
-		ft_error("IS A DIRECTORY\n", 15);
+		ft_error("IS A DIRECTORY\n", 15, cub);
 	fd = open(fichier, O_RDONLY);
 	if (fd < 0)
-		ft_error("INVALIDE .CUB\n", 14);
+		ft_error("INVALIDE .CUB\n", 14, cub);
 	while (ret != 0)
 	{
 		ret = get_next_line(fd, &str, 1);
 		if (cub->error != 0)
-			ft_error("erreur de parsing\n", 18);
+			ft_error("erreur de parsing\n", 18, cub);
 		ft_color(&str, cub);
 		ft_texture(str, cub);
 		ft_map(str, cub);
@@ -143,7 +143,7 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 	}
 	close (fd);
 	if (cub->nbligne == 0)
-		ft_error("pas de map\n", 11);
+		ft_error("pas de map\n", 11, cub);
 	stock_map(fichier, cub);
 }
 
@@ -153,20 +153,20 @@ int	check_cub(char *str, t_cub *cub)
 
 	i = 0;
 	if (!str)
-		ft_error("Nom de fichier invalide\n", 24);
+		ft_error("Nom de fichier invalide\n", 24, cub);
 	while (str[i])
 		i++;
 	while (str[i] != '.')
 	{
 		if (i == 0)
-			ft_error("nom de fichier invalide\n", 24);
+			ft_error("nom de fichier invalide\n", 24, cub);
 		i--;
 	}
 	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3]
 		== 'b' && str[i + 4] == '\0')
 		ft_parsing(str, cub, 1);
 	else
-		ft_error("nom de fichier invalide\n", 24);
+		ft_error("nom de fichier invalide\n", 24, cub);
 	return (0);
 }
 

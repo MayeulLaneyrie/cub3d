@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:19:04 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 14:04:24 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:11:35 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	free_cub(t_cub *cub)
 	}
 }
 
-void	ft_error(char *str, int i/*ajouter les stucture ici*/)
+void	ft_error(char *str, int i, t_cub *cub)
 {
 	write(1, "Error\n", 6);
 	write(1, str, i);
-	//free_cub(cub);
+	free_cub(cub);
 	exit(EXIT_FAILURE);
 }
