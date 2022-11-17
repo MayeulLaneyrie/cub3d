@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 22:07:35 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/17 13:26:48 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,26 +128,23 @@ int	debug_cub(t_cub *cub)
 
 int	main(int argc, char **argv)
 {
-	t_cub	*cub;
+	t_cub	cub;
 
-	cub = malloc(sizeof(*cub));
-	ft_init(cub);
-	if (argc == 2)
-		check_cub(argv[1], cub);
-	else
+	if (argc != 2)
 		return (printf("Usage: ./cub3D FILE\n") - 1);
+	ft_init(&cub);
+	check_cub(argv[1], &cub);
+//	debug_cub(&cub);
 
-	debug_cub(cub);
-
-	cub->d = pcr_init_disp(WIN_W, WIN_H, "Cum3D");
-	if (!cub->d)
+	cub.d = pcr_init_disp(WIN_W, WIN_H, "Cum3D");
+	if (!cub.d)
 		return (-2);
-	mlx_hook(cub->d->win, 17, 0L, &destroy_hook, cub->d);
-	mlx_hook(cub->d->win, 12, 1L << 15, &frame, cub);
-	mlx_hook(cub->d->win, 2, 1L << 0, &key_hook, cub);
-	mlx_loop_hook(cub->d->mlx, &frame, cub);
-	mlx_loop(cub->d->mlx);
-	pcr_destroy_disp(cub->d);
-
+	mlx_hook(cub.d->win, 17, 0L, &destroy_hook, cub.d);
+	mlx_hook(cub.d->win, 12, 1L << 15, &frame, &cub);
+	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);
+	mlx_loop_hook(cub.d->mlx, &frame, &cub);
+	mlx_loop(cub.d->mlx);
+	pcr_destroy_disp(cub.d);
+	free_cub(&cub);
 	return (0);
 }

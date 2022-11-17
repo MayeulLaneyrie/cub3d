@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 17:14:17 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:16:40 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	pos_start(t_cub *cub)
 	compt = 0;
 	while (cub->map[i])
 	{
+	//	printf("pos_start : %s\n", cub->map[i]);
 		j = 0;
 		while (cub->map[i][j])
 		{
@@ -70,11 +71,9 @@ void	pos_start(t_cub *cub)
 		}
 		i++;
 	}
+	//safe en dessous
 	if (compt != 1 || cub->pos[X] == 0)
-	{
 		ft_error("Nombre de position de depart incorect\n", 38);
-		cub->error = 9;
-	}
 }
 
 int	ft_stock_map(char *str, t_cub *cub)
@@ -83,7 +82,7 @@ int	ft_stock_map(char *str, t_cub *cub)
 	int			j;
 
 	j = 0;
-	cub->map[i] = NULL;
+	//cub->map[i] = NULL;
 	cub->map[i] = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	if (!cub->map[i])
 		return (0);
@@ -108,9 +107,11 @@ int	stock_map(char *fichier, t_cub *cub)
 
 	res = 1;
 	fd = open(fichier, O_RDONLY);
-	cub->map = malloc(sizeof(char *) * cub->nbligne);
+
+	//printf("nbligne avant le malloc :%d\n", cub->nbligne); // nb = 7 (les cub->map de 0 a 6)
+	cub->map = malloc(sizeof(char *) * cub->nbligne + 1); // +1 ? //remplacer //malloc de 8 pour le 0 final dans le cas vide.cub
 	if (!cub->map)
-		return (0);
+		return (0); //remplacer par ft error ?
 	while (res != 0)
 	{
 		res = get_next_line(fd, &str, 1);
@@ -118,6 +119,7 @@ int	stock_map(char *fichier, t_cub *cub)
 			ft_stock_map(str, cub);
 		free(str);
 	}
+	//cub->map[cub->nbligne] = 0; invalid read en moins
 	pos_start(cub);
 	floodfill(cub, cub->pos[X] - 0.5, cub->pos[Y] - 0.5, 0);
 	close(fd);
@@ -159,5 +161,7 @@ void	ft_map(char *str, t_cub *cub)
 			cub->error = 7;
 		nbligne = nbligne + 1;
 	}
-	cub->nbligne = nbligne;
+	cub->nbligne = nbligne -1;
 }
+
+// il y a un cub->map[i] que je ne free pas

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 21:42:23 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/17 11:33:15 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_map(char *str, t_cub *cub);
 int		check_cub(char *str, t_cub *cub);
 
 void	ft_init(t_cub *cub);
+void	free_cub(t_cub *cub);
 
 int		frame(t_cub *cub);
 

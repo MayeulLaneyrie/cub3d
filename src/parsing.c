@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/16 16:11:09 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:07:41 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 	if (fd != -1)
 		ft_error("IS A DIRECTORY\n", 15);
 	fd = open(fichier, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		ft_error("INVALIDE .CUB\n", 14);
 	while (ret != 0)
 	{
@@ -152,15 +152,14 @@ int	check_cub(char *str, t_cub *cub)
 	int	i;
 
 	i = 0;
+	if (!str)
+		ft_error("Nom de fichier invalide\n", 24);
 	while (str[i])
 		i++;
 	while (str[i] != '.')
 	{
 		if (i == 0)
-		{
 			ft_error("nom de fichier invalide\n", 24);
-			return (0);
-		}
 		i--;
 	}
 	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3]
@@ -185,11 +184,12 @@ void	ft_init(t_cub *cub)
 	cub->c = -1;
 	cub->map = NULL;
 	cub->flmap = 0;
-	cub->pos[0] = 0;
-	cub->pos[1] = 0;
+	cub->pos[X] = 0;
+	cub->pos[Y] = 0;
 	cub->a = 0;
 	cub->or_cam[0] = 0;
 	cub->or_cam[1] = 0;
 	cub->or_plancam[0] = 0;
 	cub->or_plancam[1] = 0;
+	cub->d = NULL;
 }
