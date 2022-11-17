@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/16 21:38:15 by lnr              ###   ########.fr        #
+#    Updated: 2022/11/17 18:41:16 by mlaneyri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ SRCS =	src/main.c \
 		src/vect_op.c \
 		src/trace_ray.c \
 		src/draw_hit.c \
+		src/frame.c \
+		src/hooks.c \
+		src/player_input.c \
 		\
 		src/pcr/pcr_color_op.c \
 		src/pcr/pcr_init.c \

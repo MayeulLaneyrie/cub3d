@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 15:14:03 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:51:34 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ int	stock_map(char *fichier, t_cub *cub)
 
 	res = 1;
 	fd = open(fichier, O_RDONLY);
-
 	cub->map = malloc(sizeof(char *) * (cub->nbligne + 1));
 	if (!cub->map)
 		return (0); //remplacer par ft error ?

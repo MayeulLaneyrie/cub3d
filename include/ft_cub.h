@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 16:23:43 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:15:28 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define WIN_H 720
 # define WIN_W 1280
 
-# define FOV 70
+# define FOV 90
 # define PI 3.14159265359
 
 # define VERY_BIG 1e30
@@ -58,6 +58,10 @@
 # define IDX_RSD 3
 # define IDX_RTL 4
 # define IDX_RTR 5
+
+# define DDIST 0
+# define SDIST 1
+# define STEP 2
 
 typedef enum	e_face
 {
@@ -110,9 +114,37 @@ int		check_cub(char *str, t_cub *cub);
 void	ft_init(t_cub *cub);
 void	free_cub(t_cub *cub);
 
+/*
+**	frame.c: -------------------------------------------------------------------
+*/
+
 int		frame(t_cub *cub);
 
+/*
+**	hooks.c: -------------------------------------------------------------------
+*/
+
+int		destroy_hook(t_disp *d);
+int		key_hook(int x, t_cub *cub);
+int		release_hook(int x, t_cub *cub);
+int		mouse_motion_hook(int x, int y, t_cub *cub);
+int		loop_hook(t_cub *cub);
+
+/*
+**	player_input.c: ------------------------------------------------------------
+*/
+
+int		do_inputs(t_cub *cub);
+
+/*
+**	trace_ray.c: ---------------------------------------------------------------
+*/
+
 t_hit	*trace_ray(t_cub *cub, double *ray, t_hit *ret);
+
+/*
+**	draw_hit.c: ----------------------------------------------------------------
+*/
 
 int		draw_hit(t_cub *cub, t_hit hit, int x);
 
