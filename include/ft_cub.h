@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 15:39:25 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:23:43 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@
 # define KEY_RTR 0xff53
 # define KEY_ESC 0xff1b
 
+# define IDX_FWD 0
+# define IDX_BWD 1
+# define IDX_LSD 2
+# define IDX_RSD 3
+# define IDX_RTL 4
+# define IDX_RTR 5
+
 typedef enum	e_face
 {
 	no,
@@ -85,6 +92,7 @@ struct					s_cub
 	double	a;
 	double	or_cam[2];
 	double	or_plancam[2];
+	int		key_buffer[6];
 	t_disp	*d;
 };
 

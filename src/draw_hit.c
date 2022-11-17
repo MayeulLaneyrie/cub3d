@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 16:32:46 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:45:55 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ int	ft_strncmp(char *s1, char *s2, int n)
 }
 void	draw_hitline(t_cub *cub, t_hit hit, t_pcrparam p)
 {
-	int start;
-	int end;
-	int lineHeight = (int)(WIN_H / hit.dist);
+	int 		start;
+	int 		end;
+	int			lineHeight = (int)(WIN_H / hit.dist);
+	static int	colors[4] = {8462323, 2352121, 123123132, 606060};
 
 	start = -lineHeight / 2 + WIN_H / 2;
 	if (start < 0)
@@ -37,14 +38,7 @@ void	draw_hitline(t_cub *cub, t_hit hit, t_pcrparam p)
 	end = lineHeight / 2 + WIN_H / 2;
 	if (end >= WIN_H)
 		end = WIN_H - 1;
-	if(hit.face == no)
-		p.cr1 = 8462323; //couleur du mur a remplacer par path to texture
-	if (hit.face == so)
-		p.cr1 = 2352121;
-	if (hit.face == ea)
-		p.cr1 = 123123132;
-	if (hit.face == we)
-		p.cr1 = 606060;
+	p.cr1 = colors[hit.face];
 	p.y1 = start; // debut de la ligne de pixel
 	p.y2 = end; // fin de la ligne de pixel
 	pcr_vline(cub->d, p);

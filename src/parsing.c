@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 15:15:28 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 16:18:31 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,17 @@ int	check_cub(char *str, t_cub *cub)
 
 void	ft_init(t_cub *cub)
 {
+	int	i;
+
+	i = -1;
+	while (++i < 6)
+		cub->key_buffer[i] = 0;
+	cub->pos[X] = 0;
+	cub->pos[Y] = 0;
+	cub->or_cam[X] = 0;
+	cub->or_cam[Y] = 0;
+	cub->or_plancam[X] = 0;
+	cub->or_plancam[Y] = 0;
 	cub->i = 0;
 	cub->error = 0;
 	cub->fc = 0;
@@ -184,12 +195,6 @@ void	ft_init(t_cub *cub)
 	cub->c = -1;
 	cub->map = NULL;
 	cub->flmap = 0;
-	cub->pos[X] = 0;
-	cub->pos[Y] = 0;
 	cub->a = 0;
-	cub->or_cam[0] = 0;
-	cub->or_cam[1] = 0;
-	cub->or_plancam[0] = 0;
-	cub->or_plancam[1] = 0;
 	cub->d = NULL;
 }
