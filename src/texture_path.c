@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:24:15 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 10:35:36 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:11:49 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	open_texture(t_cub *cub, char *fichier, /*,structure mlx*/)
 	if (fd < 0)
 	{
 		close (fd);
-		ft_error("Chemin vers texture invalide\n", ft_strlen(fichier));
+		ft_error("Chemin vers texture invalide\n", 29, cub);
 	}
 	close (fd);
 	//img->img = mlx_xpm_file_to_image(mlx, fichier, &img->width, &img->height);

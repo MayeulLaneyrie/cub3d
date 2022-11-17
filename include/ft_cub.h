@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 14:37:25 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:39:25 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		ft_strlen(char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	ft_error(char *str, int i);
+void	ft_error(char *str, int i, t_cub *cub);
 int		stock_map(char *str, t_cub *cub);
 void	ft_map(char *str, t_cub *cub);
 int		check_cub(char *str, t_cub *cub);
