@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 17:15:44 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:38:10 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,9 @@ int	mouse_motion_hook(int x, int y, t_cub *cub)
 	(void)y;
 	if (prev < 0)
 		prev = x;
-	cub->a += (WIN_W / 2 - x) * PI / 4000;
+	cub->a += (WIN_W / 2 - x) * PI / 8000;
 	//printf("%d, %d %d\n", x, prev, prev - x);
-	mlx_mouse_move(cub->d->mlx, cub->d->win, WIN_W / 2, WIN_H - 1);
+	mlx_mouse_move(cub->d->mlx, cub->d->win, WIN_W / 2, WIN_H / 2);
 	return (0);
 }
 
@@ -188,6 +188,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub.d->win, 12, 1L << 15, &frame, &cub);
 	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);
 	mlx_hook(cub.d->win, 3, 1L << 1, &release_hook, &cub);
+	mlx_mouse_hide(cub.d->mlx, cub.d->win);
 	mlx_hook(cub.d->win, 6, 1L << 6, &mouse_motion_hook, &cub);
 	mlx_loop_hook(cub.d->mlx, &loop_hook, &cub);
 	mlx_loop(cub.d->mlx);
