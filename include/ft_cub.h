@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 19:18:54 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 22:56:48 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define KEY_RTL 0xff51
 # define KEY_RTR 0xff53
 # define KEY_ESC 0xff1b
+# define KEY_SPR 0xff09
 
 # define IDX_FWD 0
 # define IDX_BWD 1
@@ -58,6 +59,7 @@
 # define IDX_RSD 3
 # define IDX_RTL 4
 # define IDX_RTR 5
+# define IDX_SPR 6
 
 # define DDIST 0
 # define SDIST 1
@@ -96,7 +98,7 @@ struct					s_cub
 	double	a;
 	double	or_cam[2];
 	double	or_plancam[2];
-	int		key_buffer[6];
+	int		key_buffer[7];
 	t_disp	*d;
 };
 

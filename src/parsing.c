@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 16:18:31 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 22:52:14 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void	ft_init(t_cub *cub)
 	int	i;
 
 	i = -1;
-	while (++i < 6)
+	while (++i < 7)
 		cub->key_buffer[i] = 0;
 	cub->pos[X] = 0;
 	cub->pos[Y] = 0;
