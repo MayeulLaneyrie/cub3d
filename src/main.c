@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 16:43:23 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:15:44 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	do_inputs(t_cub *cub)
 	double	step_x;
 	double	step_y;
 
-	step_x = cub->or_cam[X] / 15;
-	step_y = cub->or_cam[Y] / 15;
+	step_x = cub->or_cam[X] / 12;
+	step_y = cub->or_cam[Y] / 12;
 	if (cub->key_buffer[IDX_RTL])
 		cub->a += PI / 110;
 	if (cub->key_buffer[IDX_RTR])
@@ -136,6 +136,19 @@ int	release_hook(int x, t_cub *cub)
 	return (0);
 }
 
+int	mouse_motion_hook(int x, int y, t_cub *cub)
+{
+	static int	prev = -1;
+
+	(void)y;
+	if (prev < 0)
+		prev = x;
+	cub->a += (WIN_W / 2 - x) * PI / 4000;
+	//printf("%d, %d %d\n", x, prev, prev - x);
+	mlx_mouse_move(cub->d->mlx, cub->d->win, WIN_W / 2, WIN_H - 1);
+	return (0);
+}
+
 int	loop_hook(t_cub *cub)
 {
 	do_inputs(cub);
@@ -175,6 +188,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub.d->win, 12, 1L << 15, &frame, &cub);
 	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);
 	mlx_hook(cub.d->win, 3, 1L << 1, &release_hook, &cub);
+	mlx_hook(cub.d->win, 6, 1L << 6, &mouse_motion_hook, &cub);
 	mlx_loop_hook(cub.d->mlx, &loop_hook, &cub);
 	mlx_loop(cub.d->mlx);
 	pcr_destroy_disp(cub.d);
