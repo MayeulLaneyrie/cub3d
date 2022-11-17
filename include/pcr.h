@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/17 15:12:46 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 19:17:59 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ typedef struct s_disp
 
 typedef struct s_pcrparam
 {
-	int		x1; //xmin inclue
+	int		x1;
 	int		y1;
-	int		x2; //xmax
+	int		x2;
 	int		y2;
-	int		cr1; // clr
-	int		cr2; // si 2 couleur
+	int		cr1;
+	int		cr2;
 	char	*s;
 	double	sin;
 	double	cos;

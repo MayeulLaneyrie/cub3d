@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 19:15:28 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:18:54 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 # define SDIST 1
 # define STEP 2
 
-typedef enum	e_face
+typedef enum e_face
 {
 	no,
 	so,
@@ -71,7 +71,7 @@ typedef enum	e_face
 	we
 }	t_face;
 
-typedef	struct	s_hit
+typedef struct s_hit
 {
 	double	dist;
 	t_face	face;
@@ -152,8 +152,8 @@ int		draw_hit(t_cub *cub, t_hit hit, int x);
 **	vect_op.c: -----------------------------------------------------------------
 */
 
-int	add_v(double const *u, double const *v, double *dst);
-int	sub_v(double const *u, double const *v, double *dst);
-int	mul_rv(double t, double const *u, double *dst);
+int		add_v(double const *u, double const *v, double *dst);
+int		sub_v(double const *u, double const *v, double *dst);
+int		mul_rv(double t, double const *u, double *dst);
 
 #endif
