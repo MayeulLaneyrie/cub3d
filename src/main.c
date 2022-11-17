@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 13:26:48 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:35:10 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,14 @@ int	destroy_hook(t_disp *d)
 
 int	check_col(t_cub *cub, double x, double y)
 {
+	printf("COLISION CHECK: %f %f ==>", x, y);
 	if (x < 0 || y < 0 || y >= cub->nbligne
 		|| !cub->map[(int)y][(int)x] || cub->map[(int)y][(int)x] == '1')
+	{
+		printf(" 1\n");
 		return (1);
+	}
+	printf(" 0\n");
 	return (0);
 }
 
@@ -73,6 +78,7 @@ int	key_hook(int x, t_cub *cub)
 
 	step_x = cub->or_cam[X] / 15;
 	step_y = cub->or_cam[Y] / 15;
+	printf("STEP: %f %f\n", step_x, step_y);
 	if (x == KEY_RTL)
 		cub->a += PI / 110;
 	else if (x == KEY_RTR)
@@ -93,16 +99,16 @@ int	key_hook(int x, t_cub *cub)
 	}
 	else if (x == KEY_RSD)
 	{
-		if (!check_col(cub, cub->pos[X], cub->pos[Y] - step_y))
+		if (!check_col(cub, cub->pos[X] - step_y, cub->pos[Y]))
 			cub->pos[X] -= step_y;
-		if (!check_col(cub, cub->pos[X] + step_x, cub->pos[Y]))
+		if (!check_col(cub, cub->pos[X], cub->pos[Y] + step_x))
 			cub->pos[Y] += step_x;
 	}
 	else if (x == KEY_LSD)
 	{
-		if (!check_col(cub, cub->pos[X], cub->pos[Y] + step_y))
+		if (!check_col(cub, cub->pos[X] + step_y, cub->pos[Y]))
 			cub->pos[X] += step_y;
-		if (!check_col(cub, cub->pos[X] - step_x, cub->pos[Y]))
+		if (!check_col(cub, cub->pos[X], cub->pos[Y] - step_x))
 			cub->pos[Y] -= step_x;
 	}
 	else if (x == 'x' || x == KEY_ESC)
