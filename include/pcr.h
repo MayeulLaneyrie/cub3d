@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 17:36:06 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:40:31 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <math.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include "mlx.h"
 
 typedef struct s_image

@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 17:25:53 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:22:39 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,20 @@ void	draw_hitline(t_cub *cub, t_hit hit, int x, t_image *img)
 	int				start;
 	int				end;
 	int				lineheight;
-//	static int		colors[4] = {8462323, 2352121, 123123132, 606060};
 	static double	vfov = PI * FOV * WIN_H / (180 * WIN_W);
-	int		color;
-	(void)cub;
+	int				i;
+
 	lineheight = (int)(WIN_H / (hit.dist * 2 * tan(vfov / 2)));
-	start = -lineheight / 2 + WIN_H / 2;
-	if (start < 0)
-		start = 0;
-	end = lineheight / 2 + WIN_H / 2;
-	if (end >= WIN_H)
-		end = WIN_H - 1;
-
-	//double step = 1.0 * img->px_h / lineheight;
-	//hit.texx = (start - WIN_H / 2 + lineheight / 2) * step;
-	//p.cr1 = colors[hit.face]; pcr_getpix(cub->d->img, x, y)
-	while (start < end)
+	start = (WIN_H - lineheight) / 2;
+	end = (WIN_H + lineheight) / 2;
+	i = -1 - start * (start < 0);
+	while (++i < lineheight + start * (start < 0))
 	{
-		color = pcr_getpix(img, hit.texx * img->px_h, start / lineheight );
-		pcr_pixel(cub->d, x, start, color);
-	//	hit.texx += step;	
-		start++;
+		if (start + i >= 0 || start + i < WIN_H)
+			pcr_pixel(cub->d, x, start + i,
+				pcr_getpix(img, hit.texx * img->px_w,
+					img->px_h * i / lineheight));
 	}
-
-//	pcr_vline(cub->d, p);
 }
 
 int	draw_hit(t_cub *cub, t_hit hit, int x)

@@ -1,8 +1,8 @@
-NO         MAPS/mdr.xpm
+NO         MAPS/mur_rouge.xpm
 SO          MAPS/mur_jaune.xpm
 WE           MAPS/mur_bleu.xpm
-EA         MAPS/mur_jaune.xpm
-C             255,23,20
+EA         MAPS/mur_vert.xpm
+C             0,64,128
 F     150,            100,100
 
 
