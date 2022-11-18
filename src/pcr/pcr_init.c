@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:33:07 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 16:11:21 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:34:13 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ t_image	*pcr_load_img(void *mlx, char *path)
 	}
 	ret->addr = mlx_get_data_addr(ret->img, &(ret->bpp), &(ret->w),
 			&(ret->endn));
+	ret->opp = ret->bpp / 8;
 	return (ret);
 }
