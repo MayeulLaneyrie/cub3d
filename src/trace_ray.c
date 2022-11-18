@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:36:56 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/17 18:01:38 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:03:14 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ void	init_trace_ray(t_cub *cub, double *ray, double dd[3][2], int *mappos)
 	}
 }
 
+t_hit	*final_ray_calc(t_hit *ret)
+{
+	ret->texx -= floor(ret->texx);
+	if (!(ret->face % 2))
+		ret->texx = 1 - ret->texx;
+	return (ret);
+}
+
 t_hit	*trace_ray(t_cub *cub, double *ray, t_hit *ret)
 {
 	int		i;
@@ -48,8 +56,14 @@ t_hit	*trace_ray(t_cub *cub, double *ray, t_hit *ret)
 	}
 	ret->dist = dd[SDIST][i];
 	if (i)
+	{
 		ret->face = dd[STEP][i] < 0;
+		ret->texx = cub->pos[X] + ret->dist * ray[X];
+	}
 	else
+	{
 		ret->face = 2 + (dd[STEP][i] > 0);
-	return (ret);
+		ret->texx = cub->pos[Y] + ret->dist * ray[Y];
+	}
+	return (final_ray_calc(ret));
 }

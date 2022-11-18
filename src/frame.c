@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:03:50 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:55:51 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	frame(t_cub *cub)
 		ray[Y] = cub->or_cam[Y] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[1];
 		trace_ray(cub, ray, &hit);
 		draw_hit(cub, hit, x);
-		x += 1;
+		x++;
 	}
 	draw_hud(cub);
 	pcr_display(cub->d);
