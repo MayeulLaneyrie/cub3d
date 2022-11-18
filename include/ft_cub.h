@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:30:40 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:28:59 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ struct					s_cub
 	double	or_cam[2];
 	double	or_plancam[2];
 	int		key_buffer[7];
+	t_image	*texture[4];
 	t_disp	*d;
 };
 
@@ -113,7 +114,7 @@ void	ft_error(char *str, int i, t_cub *cub);
 int		stock_map(char *str, t_cub *cub);
 void	ft_map(char *str, t_cub *cub);
 int		check_cub(char *str, t_cub *cub);
-
+void	texture_check(t_cub *cub);
 void	ft_init(t_cub *cub);
 void	free_cub(t_cub *cub);
 

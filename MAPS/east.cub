@@ -1,7 +1,7 @@
-NO         ./path_to_the_north_texture
-SO          ./path_to_the_south_texture
-WE           ./path_to_the_west_texture
-EA         ./path_to_the_east_texture
+NO         MAPS/mdr.xpm
+SO          MAPS/mur_jaune.xpm
+WE           MAPS/mur_bleu.xpm
+EA         MAPS/mur_jaune.xpm
 C             255,23,20
 F     150,            100,100
 

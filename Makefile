@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/17 18:41:16 by mlaneyri         ###   ########.fr        #
+#    Updated: 2022/11/18 17:29:26 by shamizi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS =	src/main.c \
 		src/get_next_line_utils.c \
 		src/parsemap.c \
 		src/parsing.c \
+		src/texture_path.c \
 		src/vect_op.c \
 		src/trace_ray.c \
 		src/draw_hit.c \

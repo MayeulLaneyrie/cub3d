@@ -6,13 +6,15 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:24:15 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 15:11:49 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:31:27 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	open_texture(t_cub *cub, char *fichier, /*,structure mlx*/)
+#include "ft_cub.h"
+
+void	open_texture(t_cub *cub, char *fichier, t_image *img)
 {
-	int	fd;
+/*	int	fd;
 
 	fd = open(fichier, O_RDONLY);
 	if (fd < 0)
@@ -20,22 +22,16 @@ void	open_texture(t_cub *cub, char *fichier, /*,structure mlx*/)
 		close (fd);
 		ft_error("Chemin vers texture invalide\n", 29, cub);
 	}
-	close (fd);
-	//img->img = mlx_xpm_file_to_image(mlx, fichier, &img->width, &img->height);
-	//img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
+	close (fd);*/
+	img = pcr_load_img(cub->d->mlx, fichier);
+	if (img == NULL)
+		ft_error("path\n", 5, cub);
 }
 
-int	texture_check(t_cub *cub /*mlx*/)
+void	texture_check(t_cub *cub)
 {
-
-	open_texture(cub, cub->no /*struct ;lx*/);
-	open_texture(cub, cub->so /*struct ;lx*/);
-	open_texture(cub, cub->ea /*struct ;lx*/);
-	open_texture(cub, cub->we /*struct ;lx*/);
-	//////////////////////////////////////////
-	/*mlx->window.img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
-	  mlx->window.addr = (int *)mlx_get_data_addr(mlx->windoz.img, &mlx->window.bpp, &mlx->window.line_length, &mlx->window.endian);
-	  mlx->window.width = mlx->width;
-	  mlx->window.height = mlx->height;
-	  return(0);
+	open_texture(cub, cub->no, cub->texture[0]);
+	open_texture(cub, cub->so , cub->texture[1]);
+	open_texture(cub, cub->ea , cub->texture[2]);
+	open_texture(cub, cub->we , cub->texture[3]);
 }

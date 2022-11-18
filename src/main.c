@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:56:40 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:38:32 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (-2);
 	}
+	texture_check(&cub);
 	mlx_hook(cub.d->win, 17, 0L, &destroy_hook, cub.d);
 	mlx_hook(cub.d->win, 12, 1L << 15, &frame, &cub);
 	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);

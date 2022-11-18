@@ -6,34 +6,21 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/17 22:38:08 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/18 17:25:53 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-int	ft_strncmp(char *s1, char *s2, int n)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] && i < n)
-	{
-		if (s1[i] != s2[i])
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
-void	draw_hitline(t_cub *cub, t_hit hit, t_pcrparam p)
+void	draw_hitline(t_cub *cub, t_hit hit, int x, t_image *img)
 {
 	int				start;
 	int				end;
 	int				lineheight;
-	static int		colors[4] = {8462323, 2352121, 123123132, 606060};
+//	static int		colors[4] = {8462323, 2352121, 123123132, 606060};
 	static double	vfov = PI * FOV * WIN_H / (180 * WIN_W);
-
+	int		color;
+	(void)cub;
 	lineheight = (int)(WIN_H / (hit.dist * 2 * tan(vfov / 2)));
 	start = -lineheight / 2 + WIN_H / 2;
 	if (start < 0)
@@ -41,10 +28,19 @@ void	draw_hitline(t_cub *cub, t_hit hit, t_pcrparam p)
 	end = lineheight / 2 + WIN_H / 2;
 	if (end >= WIN_H)
 		end = WIN_H - 1;
-	p.cr1 = colors[hit.face];
-	p.y1 = start; // debut de la ligne de pixel
-	p.y2 = end; // fin de la ligne de pixel
-	pcr_vline(cub->d, p);
+
+	//double step = 1.0 * img->px_h / lineheight;
+	//hit.texx = (start - WIN_H / 2 + lineheight / 2) * step;
+	//p.cr1 = colors[hit.face]; pcr_getpix(cub->d->img, x, y)
+	while (start < end)
+	{
+		color = pcr_getpix(img, hit.texx * img->px_h, start / lineheight );
+		pcr_pixel(cub->d, x, start, color);
+	//	hit.texx += step;	
+		start++;
+	}
+
+//	pcr_vline(cub->d, p);
 }
 
 int	draw_hit(t_cub *cub, t_hit hit, int x)
@@ -61,7 +57,7 @@ int	draw_hit(t_cub *cub, t_hit hit, int x)
 	p.y2 = WIN_H - 1;
 	p.cr1 = cub->f;
 	pcr_vline(cub->d, p);
-	draw_hitline(cub, hit, p);
+	draw_hitline(cub, hit, x, cub->texture[hit.face]);
 	return (0);
 }
 
