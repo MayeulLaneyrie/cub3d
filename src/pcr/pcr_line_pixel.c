@@ -6,15 +6,31 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 15:19:04 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:11:51 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pcr.h"
 
-int	pcr_getpix(void)
+int	pcr_getpix(t_image *img, int x, int y)
 {
-	return (0);
+	int		ret;
+	char	*src;
+
+	if (x < 0 || x >= img->px_w || y < 0 || y >= img->px_h)
+		return (0);
+	src = img->addr + y * img->w + x * img->opp;
+	ret = 0;
+	if (!img->endn)
+		ret = *(unsigned int *)src;
+	else
+	{
+		ret += src[0] << 24;
+		ret += src[1] << 16;
+		ret += src[2] << 8;
+		ret += src[3];
+	}
+	return (ret);
 }
 
 int	pcr_pixel(t_disp *d, int x, int y, int cr)
@@ -27,12 +43,7 @@ int	pcr_pixel(t_disp *d, int x, int y, int cr)
 	sw = d->frame % 2;
 	dst = d->img[sw]->addr + y * d->img[sw]->w + x * d->img[sw]->opp;
 	if (!d->img[sw]->endn)
-	{
-		dst[3] = cr >> 24;
-		dst[2] = (cr >> 16) & 0xff;
-		dst[1] = (cr >> 8) & 0xff;
-		dst[0] = cr & 0xff;
-	}
+		*(unsigned int *)dst = cr;
 	else
 	{
 		dst[0] = cr >> 24;

@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 15:24:05 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:10:52 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_image
 	int		opp;
 	int		w;
 	int		endn;
-	int		img_w;
-	int		img_h;
+	int		px_w;
+	int		px_h;
 }	t_image;
 
 typedef struct s_disp
@@ -54,12 +54,13 @@ typedef struct s_pcrparam
 
 t_disp	*pcr_init_disp(int x, int y, char *s);
 
-t_image	*pcr_load_img(const char *s);
+t_image	*pcr_load_img(void *mlx, char *s);
 
 int		pcr_display(t_disp *d);
 
 t_disp	*pcr_destroy_disp(t_disp *d);
 
+int		pcr_getpix(t_image *img, int x, int y);
 int		pcr_pixel(t_disp *d, int x, int y, int color);
 
 int		abs(int x);

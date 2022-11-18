@@ -6,12 +6,11 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:33:07 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 15:22:21 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:11:21 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pcr.h"
-#include <stdio.h>
 
 t_image	*pcr_init_img(void *mlx, int x, int y)
 {
@@ -24,8 +23,8 @@ t_image	*pcr_init_img(void *mlx, int x, int y)
 	ret->addr = mlx_get_data_addr(ret->img, &(ret->bpp), &(ret->w),
 			&(ret->endn));
 	ret->opp = ret->bpp / 8;
-	ret->img_w = x;
-	ret->img_h = y;
+	ret->px_w = x;
+	ret->px_h = y;
 	return (ret);
 }
 
@@ -91,28 +90,15 @@ t_disp	*pcr_destroy_disp(t_disp *d)
 	free(d);
 	return (NULL);
 }
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pcr_load_img.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 15:13:39 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 15:22:22 by mlaneyri         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "pcr.h"
-
-t_image	*pcr_load_img(const char *path)
+t_image	*pcr_load_img(void *mlx, char *path)
 {
 	t_image	*ret;
 
 	ret = malloc(sizeof(t_image));
 	if (!ret)
 		return (NULL);
-	ret->img = mlx_xpm_file_to_image(mlx, s, &(ret->img_w), &(ret->img_h));
+	ret->img = mlx_xpm_file_to_image(mlx, path, &(ret->px_w), &(ret->px_h));
 	if (!ret->img)
 	{
 		free(ret);
