@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 22:56:48 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/18 16:30:40 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_hit
 {
 	double	dist;
 	t_face	face;
+	double	texx;
 }	t_hit;
 
 typedef struct s_cub	t_cub;
