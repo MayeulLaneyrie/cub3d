@@ -6,11 +6,16 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 12:58:09 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:19:04 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pcr.h"
+
+int	pcr_getpix(void)
+{
+	return (0);
+}
 
 int	pcr_pixel(t_disp *d, int x, int y, int cr)
 {
