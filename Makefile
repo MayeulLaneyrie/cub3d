@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/18 17:29:26 by shamizi          ###   ########.fr        #
+#    Updated: 2022/11/21 14:08:43 by shamizi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRCS =	src/main.c \
 		src/frame.c \
 		src/hooks.c \
 		src/player_input.c \
+		src/floodfill.c \
+		src/parsing2.c \
 		\
 		src/pcr/pcr_color_op.c \
 		src/pcr/pcr_init.c \

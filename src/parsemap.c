@@ -6,73 +6,11 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 17:51:34 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:00:20 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
-
-void	floodfill(t_cub *cub, int x, int y, int overflow)
-{
-	if (x < 0 || y < 0 || !cub->map[y][x])
-		ft_error("wrong map\n", 10, cub);
-	if (overflow > 30000)
-		ft_error("overflow\n", 8, cub);
-	if (cub->map[y][x] != '0' && cub->map[y][x] != '2')
-		return ;
-	if (cub->map[y][x] == ' ' || cub->map[y][x] == 'X')
-		return ;
-	if (cub->map[y][x] == '0')
-		cub->map[y][x] = ' ';
-	if (cub->map[y][x] == '2')
-		cub->map[y][x] = 'X';
-	floodfill(cub, x + 1, y, overflow++);
-	floodfill(cub, x - 1, y, overflow++);
-	floodfill(cub, x, y + 1, overflow++);
-	floodfill(cub, x, y - 1, overflow++);
-}
-
-void	orientation_start(t_cub *cub, int i, int j)
-{
-	if (cub->map[i][j] == 'N')
-		cub->a = PI / 2;
-	if (cub->map[i][j] == 'S')
-		cub->a = 3 * PI / 2;
-	if (cub->map[i][j] == 'E')
-		cub->a = PI;
-	if (cub->map[i][j] == 'W')
-		cub->a = 0;
-	cub->map[i][j] = '0';
-	cub->pos[X] = j + 0.5;
-	cub->pos[Y] = i + 0.5;
-}
-
-void	pos_start(t_cub *cub)
-{
-	int	i;
-	int	j;
-	int	compt;
-
-	i = 0;
-	compt = 0;
-	while (cub->map[i])
-	{
-		j = 0;
-		while (cub->map[i][j])
-		{
-			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
-				|| cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
-			{
-				orientation_start(cub, i, j);
-				compt++;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (compt != 1 || cub->pos[X] == 0)
-		ft_error("Nombre de position de depart incorect\n", 38, cub);
-}
 
 int	ft_stock_map(char *str, t_cub *cub)
 {
@@ -106,7 +44,7 @@ int	stock_map(char *fichier, t_cub *cub)
 	fd = open(fichier, O_RDONLY);
 	cub->map = malloc(sizeof(char *) * (cub->nbligne + 1));
 	if (!cub->map)
-		return (0); //remplacer par ft error ?
+		return (0);
 	while (res != 0)
 	{
 		res = get_next_line(fd, &str, 1);

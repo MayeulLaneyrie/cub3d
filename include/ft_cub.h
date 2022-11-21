@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 17:28:59 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:13:01 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,10 @@ int		check_cub(char *str, t_cub *cub);
 void	texture_check(t_cub *cub);
 void	ft_init(t_cub *cub);
 void	free_cub(t_cub *cub);
+void	floodfill(t_cub *cub, int x, int y, int overflow);
+void	pos_start(t_cub *cub);
+void	ft_color(char **str, t_cub *cub);
+int		ft_fc(char *str, t_cub *cub);
 
 /*
 **	frame.c: -------------------------------------------------------------------
