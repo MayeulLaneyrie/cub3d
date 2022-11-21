@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:19:04 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 15:11:35 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:54:31 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,18 @@ void	free_cub(t_cub *cub)
 {
 	int	i;
 
-	i = 0;
-	if (cub->no)
-		free(cub->no);
-	if (cub->so)
-		free(cub->so);
-	if (cub->ea)
-		free(cub->ea);
-	if (cub->we)
-		free(cub->we);
+	i = -1;
+	while (++i < 4)
+	{
+		free(cub->texpath[i]);
+		if (cub->d)
+			pcr_destroy_img(cub->d, cub->texture[i]);
+	}
 	if (cub->map)
 	{
-		while (cub->map[i])
-		{
+		i = -1;
+		while (cub->map[++i])
 			free(cub->map[i]);
-			i++;
-		}
 		free(cub->map);
 	}
 }
@@ -41,5 +37,5 @@ void	ft_error(char *str, int i, t_cub *cub)
 	write(1, "Error\n", 6);
 	write(1, str, i);
 	free_cub(cub);
-	exit(EXIT_FAILURE);
+	exit(cub->error);
 }

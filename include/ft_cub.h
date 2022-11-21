@@ -6,7 +6,11 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/21 14:13:01 by shamizi          ###   ########.fr       */
+=======
+/*   Updated: 2022/11/21 14:07:45 by mlaneyri         ###   ########.fr       */
+>>>>>>> b72ddb89c56d2115489006afbd861474c3a264b7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +26,8 @@
 # include <math.h>
 
 # include "pcr.h"
+
+//# define BONUS
 
 # define BUFFER_SIZE 10000
 
@@ -83,14 +89,12 @@ typedef struct s_hit
 typedef struct s_cub	t_cub;
 struct					s_cub
 {
+	int		update;
 	int		i;
 	int		error;
 	int		fc;
 	int		nbligne;
-	char	*no;
-	char	*so;
-	char	*ea;
-	char	*we;
+	char	*texpath[4];
 	int		f;
 	int		c;
 	char	**map;

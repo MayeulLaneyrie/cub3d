@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:56:29 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:13:06 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,21 @@ void	init_step(double *or_cam, double step[4][2], int sprint)
 	step[0][1] = (1 + 0.5 * sprint) * or_cam[Y] / 12;
 	step[1][0] = -or_cam[X] / 12;
 	step[1][1] = -or_cam[Y] / 12;
-	step[2][0] = or_cam[Y] / 18;
-	step[2][1] = -or_cam[X] / 18;
-	step[3][0] = -or_cam[Y] / 18;
-	step[3][1] = or_cam[X] / 18;
+	step[2][0] = or_cam[Y] / 21;
+	step[2][1] = -or_cam[X] / 21;
+	step[3][0] = -or_cam[Y] / 21;
+	step[3][1] = or_cam[X] / 21;
 }
 
 int	do_inputs(t_cub *cub)
 {
 	double	step[4][2];
 	int		i;
+	int		ret;
 
 	init_step(cub->or_cam, step, cub->key_buffer[IDX_SPR]);
-	if (cub->key_buffer[IDX_RTL])
-		cub->a += PI / 110;
-	if (cub->key_buffer[IDX_RTR])
-		cub->a -= PI / 110;
+	ret = (cub->key_buffer[IDX_RTL] || cub->key_buffer[IDX_RTR]);
+	cub->a += PI / 100 * (cub->key_buffer[IDX_RTL] - cub->key_buffer[IDX_RTR]);
 	i = IDX_FWD - 1;
 	while (++i <= IDX_RSD)
 	{
@@ -51,7 +50,8 @@ int	do_inputs(t_cub *cub)
 				cub->pos[X] += step[i][X];
 			if (!check_col(cub, cub->pos[X], cub->pos[Y] + step[i][Y]))
 				cub->pos[Y] += step[i][Y];
+			ret = 1;
 		}
 	}
-	return (0);
+	return (ret);
 }

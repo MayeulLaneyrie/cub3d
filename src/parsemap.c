@@ -6,7 +6,11 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/21 14:00:20 by shamizi          ###   ########.fr       */
+=======
+/*   Updated: 2022/11/21 13:21:28 by mlaneyri         ###   ########.fr       */
+>>>>>>> b72ddb89c56d2115489006afbd861474c3a264b7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +91,8 @@ void	ft_map(char *str, t_cub *cub)
 		cub->flmap = 1;
 	if (cub->flmap == 1)
 	{
-		if (cub->no == NULL || cub->so == NULL || cub->ea == NULL
-			|| cub->we == NULL || cub->f == -1 || cub->c == -1)
+		if (!cub->texpath[no] || !cub->texpath[so] || !cub->texpath[ea]
+			|| !cub->texpath[we] || cub->f == -1 || cub->c == -1)
 			cub->error = 6;
 		if (checkchar(str, cub) == 0)
 			cub->error = 7;
