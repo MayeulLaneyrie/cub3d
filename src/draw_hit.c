@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 12:39:59 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 13:56:51 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 void	draw_hitline(t_cub *cub, t_hit hit, int x, t_image *img)
 {
 	int				start;
-	int				end;
 	int				lineheight;
 	static double	vfov = PI * FOV * WIN_H / (180 * WIN_W);
 	int				i;
 
 	lineheight = (int)(WIN_H / (hit.dist * 2 * tan(vfov / 2)));
 	start = (WIN_H - lineheight) / 2;
-	end = (WIN_H + lineheight) / 2;
 	i = -1 - start * (start < 0);
 	while (++i < lineheight + start * (start < 0))
 	{
