@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:33:07 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 17:49:36 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:01:46 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,16 @@ t_disp	*pcr_init_disp(int x, int y, char *s)
 
 int	pcr_display(t_disp *d)
 {
-	//int		i;
-	//char	*dst;
+	int				i;
+	unsigned char	*dst;
 
 	mlx_put_image_to_window(d->mlx, d->win, d->img[d->frame % 2]->img, 0, 0);
 	d->frame++;
-	pcr_destroy_img(d, d->img[d->frame % 2]);
-	d->img[d->frame % 2] = pcr_init_img(d, d->w, d->h);
-	/*
 	i = -1;
 	while (++i < d->w * d->h)
 	{
 		dst = d->img[d->frame % 2]->addr + i * d->img[d->frame % 2]->opp;
 		*(unsigned long *)dst = 0;
 	}
-	*/
 	return (0);
 }
