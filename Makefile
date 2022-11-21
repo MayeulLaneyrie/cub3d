@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/21 14:26:07 by mlaneyri         ###   ########.fr        #
+#    Updated: 2022/11/21 17:51:41 by mlaneyri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRCS =	src/main.c \
 		src/parsemap.c \
 		src/parsing.c \
 		src/texture_path.c \
-		src/vect_op.c \
 		src/trace_ray.c \
 		src/draw_hit.c \
 		src/frame.c \
@@ -32,9 +31,11 @@ SRCS =	src/main.c \
 		src/pcr/pcr_init.c \
 		src/pcr/pcr_destroy.c \
 		src/pcr/pcr_line_fade.c \
-		src/pcr/pcr_line_pixel.c \
+		src/pcr/pcr_pixel.c \
+		src/pcr/pcr_ops.c \
 		src/pcr/pcr_line.c \
-		src/pcr/pcr_vhline.c
+		src/pcr/pcr_vhline.c \
+		src/pcr/pcr_rect.c
 
 OBJS =$(SRCS:.c=.o)
 

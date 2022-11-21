@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 14:26:38 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:56:27 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ struct					s_cub
 	int		error;
 	int		fc;
 	int		nbligne;
-	char	*texpath[4];
+	char	*texpath[8];
 	int		f;
 	int		c;
 	char	**map;
@@ -155,13 +155,5 @@ t_hit	*trace_ray(t_cub *cub, double *ray, t_hit *ret);
 */
 
 int		draw_hit(t_cub *cub, t_hit hit, int x);
-
-/*
-**	vect_op.c: -----------------------------------------------------------------
-*/
-
-int		add_v(double const *u, double const *v, double *dst);
-int		sub_v(double const *u, double const *v, double *dst);
-int		mul_rv(double t, double const *u, double *dst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 14:27:42 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:45:00 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_texture(char *str, t_cub *cub)
 	static const char	*lookup[4] = {"NO", "SO", "EA", "WE"};
 	t_face				i;
 
-	i = no - 1;
-	while (++i <= we)
+	i = -1;
+	while (++i < 4)
 	{
 		if (str[0] == lookup[i][0] && str[1] == lookup[i][1])
 		{
