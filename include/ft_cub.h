@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 13:02:41 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:07:45 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <math.h>
 
 # include "pcr.h"
+
+//# define BONUS
 
 # define BUFFER_SIZE 10000
 
@@ -89,10 +91,6 @@ struct					s_cub
 	int		fc;
 	int		nbligne;
 	char	*texpath[4];
-	char	*no;
-	char	*so;
-	char	*ea;
-	char	*we;
 	int		f;
 	int		c;
 	char	**map;
