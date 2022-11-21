@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 17:28:59 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/21 13:02:41 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,12 @@ typedef struct s_hit
 typedef struct s_cub	t_cub;
 struct					s_cub
 {
+	int		update;
 	int		i;
 	int		error;
 	int		fc;
 	int		nbligne;
+	char	*texpath[4];
 	char	*no;
 	char	*so;
 	char	*ea;

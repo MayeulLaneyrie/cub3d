@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/17 22:52:14 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/21 13:27:38 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	ft_color(char **str, t_cub *cub)
 
 	i = 0;
 	cub->i = 1;
-	if (cub->nbligne > 0 && (cub->no == NULL || cub->so == NULL
-			|| cub->ea == NULL || cub->we == NULL))
+	if (cub->nbligne > 0 && (!cub->texpath[no] || !cub->texpath[so]
+			|| !cub->texpath[ea] || !cub->texpath[we]))
 		cub->error = 3;
 	if (*str[i] == 'F')
 		cub->f = ft_fc(*str, cub);
@@ -106,17 +106,18 @@ void	ft_path(char *str, t_cub *cub, char **texture, int i)
 
 void	ft_texture(char *str, t_cub *cub)
 {
-	int	i;
+	static const char	*lookup[4] = {"NO", "SO", "EA", "WE"};
+	t_face				i;
 
-	i = 0;
-	if (str[i] == 'N' && str[i + 1] == 'O')
-		ft_path(str, cub, &cub->no, 2);
-	else if (str[i] == 'S' && str[i + 1] == 'O')
-		ft_path(str, cub, &cub->so, 2);
-	else if (str[i] == 'E' && str[i + 1] == 'A')
-		ft_path(str, cub, &cub->ea, 2);
-	else if (str[i] == 'W' && str[i + 1] == 'E')
-		ft_path(str, cub, &cub->we, 2);
+	i = no - 1;
+	while (++i <= we)
+	{
+		if (str[0] == lookup[i][0] && str[1] == lookup[i][1])
+		{
+			ft_path(str, cub, &(cub->texpath[i]), 2);
+			break ;
+		}
+	}
 }
 
 void	ft_parsing(char *fichier, t_cub *cub, int ret)
@@ -177,20 +178,20 @@ void	ft_init(t_cub *cub)
 	i = -1;
 	while (++i < 7)
 		cub->key_buffer[i] = 0;
-	cub->pos[X] = 0;
-	cub->pos[Y] = 0;
-	cub->or_cam[X] = 0;
-	cub->or_cam[Y] = 0;
-	cub->or_plancam[X] = 0;
-	cub->or_plancam[Y] = 0;
+	i = -1;
+	while (++i < 4)
+	{
+		cub->texpath[i] = NULL;
+		cub->texture[i] = NULL;
+		cub->pos[i / 2] = 0;
+		cub->or_cam[i / 2] = 0;
+		cub->or_plancam[i / 2] = 0;
+	}
+	cub->update = 0;
 	cub->i = 0;
 	cub->error = 0;
 	cub->fc = 0;
 	cub->nbligne = 0;
-	cub->no = NULL;
-	cub->so = NULL;
-	cub->ea = NULL;
-	cub->we = NULL;
 	cub->f = -1;
 	cub->c = -1;
 	cub->map = NULL;

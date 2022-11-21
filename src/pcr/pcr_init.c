@@ -6,25 +6,44 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:33:07 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/18 17:34:13 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 13:47:50 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pcr.h"
 
-t_image	*pcr_init_img(void *mlx, int x, int y)
+t_image	*pcr_init_img(t_disp *d, int x, int y)
 {
 	t_image	*ret;
 
 	ret = malloc(sizeof(t_image));
 	if (!ret)
 		return (NULL);
-	ret->img = mlx_new_image(mlx, x, y);
+	ret->img = mlx_new_image(d->mlx, x, y);
 	ret->addr = mlx_get_data_addr(ret->img, &(ret->bpp), &(ret->w),
 			&(ret->endn));
 	ret->opp = ret->bpp / 8;
 	ret->px_w = x;
 	ret->px_h = y;
+	return (ret);
+}
+
+t_image	*pcr_load_img(t_disp *d, char *path)
+{
+	t_image	*ret;
+
+	ret = malloc(sizeof(t_image));
+	if (!ret)
+		return (NULL);
+	ret->img = mlx_xpm_file_to_image(d->mlx, path, &(ret->px_w), &(ret->px_h));
+	if (!ret->img)
+	{
+		free(ret);
+		return (NULL);
+	}
+	ret->addr = mlx_get_data_addr(ret->img, &(ret->bpp), &(ret->w),
+			&(ret->endn));
+	ret->opp = ret->bpp / 8;
 	return (ret);
 }
 
@@ -47,10 +66,10 @@ t_disp	*pcr_init_disp(int x, int y, char *s)
 	ret->win = mlx_new_window(ret->mlx, x, y, s);
 	if (!ret->win)
 		return (pcr_destroy_disp(ret));
-	ret->img[0] = pcr_init_img(ret->mlx, x, y);
+	ret->img[0] = pcr_init_img(ret, x, y);
 	if (!ret->img[0])
 		return (pcr_destroy_disp(ret));
-	ret->img[1] = pcr_init_img(ret->mlx, x, y);
+	ret->img[1] = pcr_init_img(ret, x, y);
 	if (!ret->img[1])
 		return (pcr_destroy_disp(ret));
 	return (ret);
@@ -70,42 +89,4 @@ int	pcr_display(t_disp *d)
 		*(unsigned long *)dst = 0;
 	}
 	return (0);
-}
-
-t_disp	*pcr_destroy_disp(t_disp *d)
-{
-	if (!d)
-		return (NULL);
-	if (d->img[0])
-		mlx_destroy_image(d->mlx, d->img[0]->img);
-	free(d->img[0]);
-	if (d->img[1])
-		mlx_destroy_image(d->mlx, d->img[1]->img);
-	free(d->img[1]);
-	if (d->win)
-		mlx_destroy_window(d->mlx, d->win);
-	if (d->mlx)
-		mlx_destroy_display(d->mlx);
-	free(d->mlx);
-	free(d);
-	return (NULL);
-}
-
-t_image	*pcr_load_img(void *mlx, char *path)
-{
-	t_image	*ret;
-
-	ret = malloc(sizeof(t_image));
-	if (!ret)
-		return (NULL);
-	ret->img = mlx_xpm_file_to_image(mlx, path, &(ret->px_w), &(ret->px_h));
-	if (!ret->img)
-	{
-		free(ret);
-		return (NULL);
-	}
-	ret->addr = mlx_get_data_addr(ret->img, &(ret->bpp), &(ret->w),
-			&(ret->endn));
-	ret->opp = ret->bpp / 8;
-	return (ret);
 }

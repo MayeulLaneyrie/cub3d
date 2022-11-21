@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:56:29 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:22:55 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,20 @@ int	do_inputs(t_cub *cub)
 {
 	double	step[4][2];
 	int		i;
+	int		ret;
 
+	ret = 0;
 	init_step(cub->or_cam, step, cub->key_buffer[IDX_SPR]);
 	if (cub->key_buffer[IDX_RTL])
+	{
+		ret = 1;
 		cub->a += PI / 110;
+	}
 	if (cub->key_buffer[IDX_RTR])
+	{
+		ret = 1;
 		cub->a -= PI / 110;
+	}
 	i = IDX_FWD - 1;
 	while (++i <= IDX_RSD)
 	{
@@ -51,7 +59,8 @@ int	do_inputs(t_cub *cub)
 				cub->pos[X] += step[i][X];
 			if (!check_col(cub, cub->pos[X], cub->pos[Y] + step[i][Y]))
 				cub->pos[Y] += step[i][Y];
+			ret = 1;
 		}
 	}
-	return (0);
+	return (ret);
 }
