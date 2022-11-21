@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 17:50:46 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:44:17 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ int	pcr_pixel(t_disp *d, int x, int y, int cr)
 {
 	unsigned char	*dst;
 	unsigned char	sw;
-	unsigned char	alpha;
 
 	if (x < 0 || y < 0 || x >= d->w || y >= d->h)
 		return (-1);
 	sw = d->frame % 2;
 	dst = d->img[sw]->addr + y * d->img[sw]->w + x * d->img[sw]->opp;
-	alpha = cr >> 24;
 	if (!d->img[sw]->endn)
 		*(unsigned int *)dst = cr;
 	else
