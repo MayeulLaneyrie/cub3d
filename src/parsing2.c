@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:05:33 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 14:05:35 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:29:18 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	ft_color(char **str, t_cub *cub)
 
 	i = 0;
 	cub->i = 1;
-	if (cub->nbligne > 0 && (cub->no == NULL || cub->so == NULL
-			|| cub->ea == NULL || cub->we == NULL))
+	if (cub->nbligne > 0 && (!cub->texpath[no] || !cub->texpath[so]
+			|| !cub->texpath[ea] || !cub->texpath[we]))
 		cub->error = 3;
 	if (*str[i] == 'F')
 		cub->f = ft_fc(*str, cub);
