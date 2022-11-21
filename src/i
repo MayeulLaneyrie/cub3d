@@ -1,0 +1,153 @@
+draw_hit.c:			pcr_pixel(cub->d, x, start + i,
+draw_hit.c:	p.cr1 = cub->c;
+draw_hit.c:	pcr_vline(cub->d, p);
+draw_hit.c:	p.cr1 = cub->f;
+draw_hit.c:	pcr_vline(cub->d, p);
+draw_hit.c:		draw_hitline(cub, hit, x, cub->texture[hit.face]);
+trace_ray.c:		mappos[i] = (int)cub->pos[i] - (cub->pos[i] < 0);
+trace_ray.c:			* (dd[STEP][i] * mappos[i] - dd[STEP][i] * cub->pos[i]
+trace_ray.c:			|| mappos[Y] > cub->mapsize[Y] - 1
+trace_ray.c:			|| mappos[X] > ft_strlen(cub->map[mappos[Y]]));
+trace_ray.c:			|| (mappos[Y] > cub->mapsize[Y] && dd[STEP][Y] > 0)
+trace_ray.c:			|| (mappos[X] > cub->mapsize[X] && dd[STEP][X] > 0))
+trace_ray.c:		if (!out && cub->map[mappos[Y]][mappos[X]] == '1')
+trace_ray.c:		ret->texx = cub->pos[X] + ret->dist * ray[X];
+trace_ray.c:		ret->texx = cub->pos[Y] + ret->dist * ray[Y];
+texture_path.c:		cub->texture[i] = pcr_load_img(cub->d, cub->texpath[i]);
+texture_path.c:		if (!cub->texture[i])
+error.c:		free(cub->texpath[i]);
+error.c:		if (cub->d)
+error.c:			pcr_destroy_img(cub->d, cub->texture[i]);
+error.c:	if (cub->map)
+error.c:		while (cub->map[++i])
+error.c:			free(cub->map[i]);
+error.c:		free(cub->map);
+error.c:	exit(cub->error);
+frame.c:	cub->or_cam[X] = cos(cub->a);
+frame.c:	cub->or_cam[Y] = -sin(cub->a);
+frame.c:	cub->or_plancam[X] = -cub->or_cam[Y] * tan(PI * FOV / 360);
+frame.c:	cub->or_plancam[Y] = cub->or_cam[X] * tan(PI * FOV / 360);
+frame.c:		ray[X] = cub->or_cam[X] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[0];
+frame.c:		ray[Y] = cub->or_cam[Y] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[1];
+frame.c:	pcr_display(cub->d);
+floodfill.c:	if (x < 0 || y < 0 || !cub->map[y][x])
+floodfill.c:	if (cub->map[y][x] != '0' && cub->map[y][x] != '2')
+floodfill.c:	if (cub->map[y][x] == ' ' || cub->map[y][x] == 'X')
+floodfill.c:	if (cub->map[y][x] == '0')
+floodfill.c:		cub->map[y][x] = ' ';
+floodfill.c:	if (cub->map[y][x] == '2')
+floodfill.c:		cub->map[y][x] = 'X';
+floodfill.c:	if (cub->map[i][j] == 'N')
+floodfill.c:		cub->a = PI / 2;
+floodfill.c:	if (cub->map[i][j] == 'S')
+floodfill.c:		cub->a = 3 * PI / 2;
+floodfill.c:	if (cub->map[i][j] == 'E')
+floodfill.c:		cub->a = PI;
+floodfill.c:	if (cub->map[i][j] == 'W')
+floodfill.c:		cub->a = 0;
+floodfill.c:	cub->map[i][j] = '0';
+floodfill.c:	cub->pos[X] = j + 0.5;
+floodfill.c:	cub->pos[Y] = i + 0.5;
+floodfill.c:	while (cub->map[i])
+floodfill.c:		while (cub->map[i][j])
+floodfill.c:			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
+floodfill.c:				|| cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
+floodfill.c:	if (compt != 1 || cub->pos[X] == 0)
+parsing.c:		cub->error = 4;
+parsing.c:		cub->error = 4;
+parsing.c:			ft_path(str, cub, &(cub->texpath[i]), 2);
+parsing.c:		if (cub->error != 0)
+parsing.c:	if (!cub->mapsize[Y])
+parsing.c:		cub->key_buffer[i] = 0;
+parsing.c:		cub->texpath[i] = NULL;
+parsing.c:		cub->texture[i] = NULL;
+parsing.c:		cub->pos[i / 2] = 0;
+parsing.c:		cub->or_cam[i / 2] = 0;
+parsing.c:		cub->or_plancam[i / 2] = 0;
+parsing.c:		cub->mapsize[i / 2] = 0;
+parsing.c:	cub->update = 0;
+parsing.c:	cub->i = 0;
+parsing.c:	cub->error = 0;
+parsing.c:	cub->fc = 0;
+parsing.c:	cub->f = -1;
+parsing.c:	cub->c = -1;
+parsing.c:	cub->map = NULL;
+parsing.c:	cub->flmap = 0;
+parsing.c:	cub->a = 0;
+parsing.c:	cub->d = NULL;
+player_input.c:	if (!cub->bonus)
+player_input.c:	if (x < 0 || y < 0 || y >= cub->mapsize[Y]
+player_input.c:		|| !cub->map[(int)y][(int)x] || cub->map[(int)y][(int)x] == '1')
+player_input.c:	init_step(cub->or_cam, step, cub->key_buffer[IDX_SPR]);
+player_input.c:	ret = (cub->key_buffer[IDX_RTL] || cub->key_buffer[IDX_RTR]);
+player_input.c:	cub->a += PI / 100 * (cub->key_buffer[IDX_RTL] - cub->key_buffer[IDX_RTR]);
+player_input.c:		if (cub->key_buffer[i])
+player_input.c:			if (!check_col(cub, cub->pos[X] + step[i][X], cub->pos[Y]))
+player_input.c:				cub->pos[X] += step[i][X];
+player_input.c:			if (!check_col(cub, cub->pos[X], cub->pos[Y] + step[i][Y]))
+player_input.c:				cub->pos[Y] += step[i][Y];
+parsing2.c:		cub->error = 2;
+parsing2.c:			cub->error = 1;
+parsing2.c:		cub->error = 1;
+parsing2.c:	cub->fc = 0;
+parsing2.c:	while (str[cub->i] == ' ' || str[cub->i] == ',')
+parsing2.c:		cub->i++;
+parsing2.c:		while (str[cub->i] >= '0' && str[cub->i] <= '9')
+parsing2.c:			check = check * 10 + str[cub->i] - 48;
+parsing2.c:			if (str[cub->i + 1] < '0' || str[cub->i] > '9')
+parsing2.c:				cub->fc += check << n;
+parsing2.c:			cub->i++;
+parsing2.c:			cub->error = 2;
+parsing2.c:	return (cub->fc);
+parsing2.c:	cub->i = 1;
+parsing2.c:	if (cub->mapsize[Y] > 0 && (!cub->texpath[no] || !cub->texpath[so]
+parsing2.c:			|| !cub->texpath[ea] || !cub->texpath[we]))
+parsing2.c:		cub->error = 3;
+parsing2.c:		cub->f = ft_fc(*str, cub);
+parsing2.c:		cub->c = ft_fc(*str, cub);
+hud.c:	p.x1 = 10 + 10 * cub->pos[X] - 3;
+hud.c:	p.y1 = 10 + 10 * cub->pos[Y] - 3;
+hud.c:	pcr_rect(cub->d, p);
+hud.c:	p.x2 = p.x1 + 20 * (cub->or_cam[X] + cub->or_plancam[X]);
+hud.c:	p.y2 = p.y1 + 20 * (cub->or_cam[Y] + cub->or_plancam[Y]);
+hud.c:	pcr_line(cub->d, p);
+hud.c:	p.x2 = p.x1 + 20 * (cub->or_cam[X] - cub->or_plancam[X]);
+hud.c:	p.y2 = p.y1 + 20 * (cub->or_cam[Y] - cub->or_plancam[Y]);
+hud.c:	pcr_line(cub->d, p);
+hud.c:	p.x2 = 10 * cub->mapsize[X];
+hud.c:	p.y2 = 10 * cub->mapsize[Y];
+hud.c:	pcr_rect(cub->d, p);
+hud.c:	while (++y < cub->mapsize[Y])
+hud.c:		while (cub->map[y][++x])
+hud.c:			if (cub->map[y][x] != '1')
+hud.c:				pcr_rect(cub->d, p);
+hud.c:	pcr_vline(cub->d, p);
+hud.c:	pcr_hline(cub->d, p);
+hud.c:	if (!cub->bonus)
+parsemap.c:	cub->map[i] = malloc(sizeof(char) * (ft_strlen(str) + 1));
+parsemap.c:	if (!cub->map[i])
+parsemap.c:			cub->map[i][j] = '1';
+parsemap.c:			cub->map[i][j] = str[j];
+parsemap.c:	cub->map[i][j] = '\0';
+parsemap.c:	cub->map = malloc(sizeof(char *) * (cub->mapsize[Y] + 1));
+parsemap.c:	if (!cub->map)
+parsemap.c:	cub->map[cub->mapsize[Y]] = 0;
+parsemap.c:	floodfill(cub, cub->pos[X] - 0.5, cub->pos[Y] - 0.5, 0);
+parsemap.c:			cub->error = 8;
+parsemap.c:		cub->flmap = 1;
+parsemap.c:	if (cub->flmap)
+parsemap.c:		if (!cub->texpath[no] || !cub->texpath[so] || !cub->texpath[ea]
+parsemap.c:			|| !cub->texpath[we] || cub->f == -1 || cub->c == -1)
+parsemap.c:			cub->error = 6;
+parsemap.c:			cub->error = 7;
+parsemap.c:		if (ft_strlen(str) > cub->mapsize[X])
+parsemap.c:			cub->mapsize[X] = ft_strlen(str);
+parsemap.c:	cub->mapsize[Y] = nbligne - 1;
+hooks.c:			cub->key_buffer[i] = 1;
+hooks.c:		mlx_loop_end(cub->d->mlx);
+hooks.c:			cub->key_buffer[i] = 0;
+hooks.c:		cub->a += (WIN_W / 2 - x) * PI / 6000;
+hooks.c:	mlx_mouse_move(cub->d->mlx, cub->d->win, WIN_W / 2, WIN_H / 2);
+hooks.c:	cub->update = 1;
+hooks.c:	else if (cub->update)
+hooks.c:		cub->update = 0;

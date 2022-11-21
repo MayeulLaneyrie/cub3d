@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 16:56:27 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 20:41:18 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 # include "pcr.h"
 
-//# define BONUS
-
 # define BUFFER_SIZE 10000
 
 # define WIN_H 720
@@ -38,7 +36,7 @@
 # define X 0
 # define Y 1
 
-//# define AZERTY
+# define AZERTY
 
 # ifdef AZERTY
 #  define KEY_FWD 'z'
@@ -85,10 +83,12 @@ typedef struct s_hit
 typedef struct s_cub	t_cub;
 struct					s_cub
 {
+	int		bonus;
 	int		update;
 	int		i;
 	int		error;
 	int		fc;
+	int		mapsize[2];
 	int		nbligne;
 	char	*texpath[8];
 	int		f;
@@ -127,6 +127,12 @@ int		ft_fc(char *str, t_cub *cub);
 */
 
 int		frame(t_cub *cub);
+
+/*
+**	hud.c: ---------------------------------------------------------------------
+*/
+
+void	draw_hud(t_cub *cub);
 
 /*
 **	hooks.c: -------------------------------------------------------------------

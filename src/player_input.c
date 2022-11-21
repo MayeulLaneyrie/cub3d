@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 14:13:06 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:12:23 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	check_col(t_cub *cub, double x, double y)
 {
-	if (x < 0 || y < 0 || y >= cub->nbligne
+	if (!cub->bonus)
+		return (0);
+	if (x < 0 || y < 0 || y >= cub->mapsize[Y]
 		|| !cub->map[(int)y][(int)x] || cub->map[(int)y][(int)x] == '1')
 		return (1);
 	return (0);
@@ -38,6 +40,8 @@ int	do_inputs(t_cub *cub)
 	int		i;
 	int		ret;
 
+	if (cub->bonus > 1)
+		return (0);
 	init_step(cub->or_cam, step, cub->key_buffer[IDX_SPR]);
 	ret = (cub->key_buffer[IDX_RTL] || cub->key_buffer[IDX_RTR]);
 	cub->a += PI / 100 * (cub->key_buffer[IDX_RTL] - cub->key_buffer[IDX_RTR]);

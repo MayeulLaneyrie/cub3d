@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 13:56:51 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 20:35:59 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	draw_hit(t_cub *cub, t_hit hit, int x)
 	p.y2 = WIN_H - 1;
 	p.cr1 = cub->f;
 	pcr_vline(cub->d, p);
-	draw_hitline(cub, hit, x, cub->texture[hit.face]);
+	if (hit.dist > 0)
+		draw_hitline(cub, hit, x, cub->texture[hit.face]);
 	return (0);
 }
 

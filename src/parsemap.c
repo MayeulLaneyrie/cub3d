@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 14:26:23 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 21:57:05 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	stock_map(char *fichier, t_cub *cub)
 
 	res = 1;
 	fd = open(fichier, O_RDONLY);
-	cub->map = malloc(sizeof(char *) * (cub->nbligne + 1));
+	cub->map = malloc(sizeof(char *) * (cub->mapsize[Y] + 1));
 	if (!cub->map)
 		return (0);
 	while (res != 0)
@@ -52,7 +52,7 @@ int	stock_map(char *fichier, t_cub *cub)
 			ft_stock_map(str, cub);
 		free(str);
 	}
-	cub->map[cub->nbligne] = 0;
+	cub->map[cub->mapsize[Y]] = 0;
 	pos_start(cub);
 	floodfill(cub, cub->pos[X] - 0.5, cub->pos[Y] - 0.5, 0);
 	close(fd);
@@ -67,7 +67,7 @@ int	checkchar(char *str, t_cub *cub)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != '0' && str[i] != '1' && str[i] != '2' && str[i] != ' '
+		if (str[i] != '0' && str[i] != '1' && str[i] != ' '
 			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W')
 			return (0);
 		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
@@ -83,16 +83,18 @@ void	ft_map(char *str, t_cub *cub)
 {
 	static int	nbligne = 0;
 
-	if (str[0] == ' ' || str[0] == '1' || str[0] == '0' || str[0] == '2')
+	if (str[0] == ' ' || str[0] == '1' || str[0] == '0')
 		cub->flmap = 1;
-	if (cub->flmap == 1)
+	if (cub->flmap)
 	{
 		if (!cub->texpath[no] || !cub->texpath[so] || !cub->texpath[ea]
 			|| !cub->texpath[we] || cub->f == -1 || cub->c == -1)
 			cub->error = 6;
-		if (checkchar(str, cub) == 0)
+		if (!checkchar(str, cub))
 			cub->error = 7;
-		nbligne = nbligne + 1;
+		if (ft_strlen(str) > cub->mapsize[X])
+			cub->mapsize[X] = ft_strlen(str);
+		nbligne++;
 	}
-	cub->nbligne = nbligne -1;
+	cub->mapsize[Y] = nbligne - 1;
 }

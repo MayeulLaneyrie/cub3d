@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 15:54:42 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:20:19 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,15 @@ int	key_hook(int x, t_cub *cub)
 	while (++i < 7)
 		if (keybufftable[i] == x)
 			cub->key_buffer[i] = 1;
-	if (x == 'x' || x == KEY_ESC)
+	if (x == 'x' || (x == KEY_ESC && !cub->bonus))
 		mlx_loop_end(cub->d->mlx);
+	if (x == KEY_ESC && cub->bonus)
+	{
+		cub->bonus = 1 + (cub->bonus == 1);
+		if (cub->bonus == 1)
+			mlx_mouse_hide(cub->d->mlx, cub->d->win);
+		frame(cub);
+	}
 	return (0);
 }
 
@@ -51,7 +58,7 @@ int	mouse_motion_hook(int x, int y, t_cub *cub)
 	static int	not_first = 0;
 
 	(void)y;
-	if (x == WIN_W / 2)
+	if (x == WIN_W / 2 || cub->bonus > 1)
 		return (0);
 	if (not_first > 5)
 		cub->a += (WIN_W / 2 - x) * PI / 6000;

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 15:45:00 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 20:45:25 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 		free(str);
 	}
 	close (fd);
-	if (cub->nbligne == 0)
+	if (!cub->mapsize[Y])
 		ft_error("pas de map\n", 11, cub);
 	stock_map(fichier, cub);
 }
@@ -115,12 +115,12 @@ void	ft_init(t_cub *cub)
 		cub->pos[i / 2] = 0;
 		cub->or_cam[i / 2] = 0;
 		cub->or_plancam[i / 2] = 0;
+		cub->mapsize[i / 2] = 0;
 	}
 	cub->update = 0;
 	cub->i = 0;
 	cub->error = 0;
 	cub->fc = 0;
-	cub->nbligne = 0;
 	cub->f = -1;
 	cub->c = -1;
 	cub->map = NULL;

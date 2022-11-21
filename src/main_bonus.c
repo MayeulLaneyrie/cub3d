@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:18:17 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/21 20:06:43 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ int	main(int argc, char **argv)
 		free_cub(&cub);
 		return (-2);
 	}
-	cub.bonus = 0;
+	cub.bonus = 1;
 	texture_check(&cub);
 	mlx_hook(cub.d->win, 17, 0L, &destroy_hook, cub.d);
 	mlx_hook(cub.d->win, 12, 1L << 15, &frame, &cub);
 	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);
 	mlx_hook(cub.d->win, 3, 1L << 1, &release_hook, &cub);
+	mlx_mouse_hide(cub.d->mlx, cub.d->win);
+	mlx_hook(cub.d->win, 6, 1L << 6, &mouse_motion_hook, &cub);
 	mlx_loop_hook(cub.d->mlx, &loop_hook, &cub);
 	mlx_loop(cub.d->mlx);
 	free_cub(&cub);
