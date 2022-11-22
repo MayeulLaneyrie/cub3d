@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 20:45:25 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/22 14:05:55 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_path(char *str, t_cub *cub, char **texture, int i)
 
 	j = 0;
 	if (*texture != NULL)
+		cub->error = 4;
+	if (str[i] != ' ')
 		cub->error = 4;
 	while (str[i] && str[i] == ' ')
 		i++;
@@ -64,14 +66,14 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 	while (ret != 0)
 	{
 		ret = get_next_line(fd, &str, 1);
-		if (cub->error != 0)
-			ft_error("erreur de parsing\n", 18, cub);
 		ft_color(&str, cub);
 		ft_texture(str, cub);
 		ft_map(str, cub);
 		free(str);
 	}
 	close (fd);
+	if (cub->error != 0)
+		ft_error("erreur de parsing\n", 18, cub);
 	if (!cub->mapsize[Y])
 		ft_error("pas de map\n", 11, cub);
 	stock_map(fichier, cub);
