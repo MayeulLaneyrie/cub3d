@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:19:04 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 13:54:31 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:14:42 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	free_cub(t_cub *cub)
 	i = -1;
 	while (++i < 4)
 	{
-		free(cub->texpath[i]);
+		if (cub->texpath[i])
+			free(cub->texpath[i]);
 		if (cub->d)
 			pcr_destroy_img(cub->d, cub->texture[i]);
 	}

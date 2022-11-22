@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 20:41:18 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/22 13:37:22 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define X 0
 # define Y 1
 
-# define AZERTY
+//# define AZERTY
 
 # ifdef AZERTY
 #  define KEY_FWD 'z'
