@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 14:06:56 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:46:13 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,22 @@ int	checkchar(char *str, t_cub *cub)
 {
 	int			i;
 	static int	j = 0;
+	static int	k = 0;
 
 	i = 0;
+	if (!str[0])
+		k++;
 	while (str[i])
 	{
-		if (str[i] != '0' && str[i] != '1' && str[i] != ' '
-			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W')
+		if (str[i] != '0' && str[i] != '1' && str[i] != ' ' && str[i] != 'N'
+			&& str[i] != 'S' && str[i] != 'E' && str[i] != 'W' && !str[0])
 			return (0);
 		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 			j++;
 		if (j > 1)
 			cub->error = 8;
+		if (k > 0 && (str[i] == '1' || str[i] == '0' || str[i] == ' '))
+			cub->error = 9;
 		i++;
 	}
 	return (1);
