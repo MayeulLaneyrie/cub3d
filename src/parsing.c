@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/22 14:05:55 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/23 14:01:23 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_parsing(char *fichier, t_cub *cub, int ret)
 		free(str);
 	}
 	close (fd);
+	printf("error : %d\n", cub->error);
 	if (cub->error != 0)
 		ft_error("erreur de parsing\n", 18, cub);
 	if (!cub->mapsize[Y])
