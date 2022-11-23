@@ -6,11 +6,17 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:36:44 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/23 16:01:46 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+void	pause_text(t_cub *cub)
+{
+	mlx_string_put(cub->d->mlx, cub->d->win, WIN_W / 2 - 30, WIN_H / 2 + 12,
+		0xffffff, "PAUSE");
+}
 
 int	frame(t_cub *cub)
 {
@@ -36,5 +42,7 @@ int	frame(t_cub *cub)
 	}
 	draw_hud(cub);
 	pcr_display(cub->d);
+	if (cub->bonus > 1)
+		pause_text(cub);
 	return (0);
 }

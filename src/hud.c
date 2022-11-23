@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 13:06:50 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:58:14 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,6 @@ void	draw_map(t_cub *cub)
 	int			x;
 	int			y;
 
-	/*
-	p.x1 = 10;
-	p.y1 = 10;
-	p.x2 = 10 * cub->mapsize[X];
-	p.y2 = 10 * cub->mapsize[Y];
-	p.cr1 = 0x80ffffff;
-	pcr_rect(cub->d, p);
-	*/
 	p.x2 = 10;
 	p.y2 = 10;
 	p.cr1 = 0xa0000000;
@@ -62,7 +54,7 @@ void	draw_map(t_cub *cub)
 			else
 				p.cr1 = 0x80ffffff;
 			if (cub->map[y][x] != '.')
-			pcr_rect(cub->d, p);
+				pcr_rect(cub->d, p);
 		}
 	}
 }
@@ -106,7 +98,8 @@ void	draw_hud(t_cub *cub)
 {
 	if (!cub->bonus)
 		return ;
-	draw_cursor(cub);
+	if (cub->bonus < 2)
+		draw_cursor(cub);
 	draw_map(cub);
 	draw_mc(cub);
 	draw_pause(cub);

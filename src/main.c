@@ -6,11 +6,12 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:18:17 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/23 15:36:08 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "mlx_int.h"
 
 int	main(int argc, char **argv)
 {
@@ -33,6 +34,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);
 	mlx_hook(cub.d->win, 3, 1L << 1, &release_hook, &cub);
 	mlx_loop_hook(cub.d->mlx, &loop_hook, &cub);
+	mlx_mouse_hide(cub.d->mlx, cub.d->win);
 	mlx_loop(cub.d->mlx);
 	free_cub(&cub);
 	pcr_destroy_disp(cub.d);
