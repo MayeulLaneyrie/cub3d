@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 14:12:32 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/23 14:46:13 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ int	checkchar(char *str, t_cub *cub)
 		if (j > 1)
 			cub->error = 8;
 		if (k > 0 && (str[i] == '1' || str[i] == '0' || str[i] == ' '))
-		{
-			printf("k :%d et str[i] : %c\n", k, str[i]);
 			cub->error = 9;
-		}
 		i++;
 	}
 	return (1);

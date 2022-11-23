@@ -1,10 +1,11 @@
-NO         MAPS/texture/turbolol.xpm
 SO          MAPS/texture/mc.xpm
+NO         MAPS/texture/turbolol.xpm
 WE           MAPS/texture/mur_bleu.xpm
 EA         MAPS/texture/shamizi.xpm
 C             20,50,128
 F     150,            100,100
 
+NO         MAPS/turbolol.xpm
 
 
         1111111111111111111111111
