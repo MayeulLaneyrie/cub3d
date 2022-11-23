@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/22 16:47:23 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/23 14:06:56 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_stock_map(char *str, t_cub *cub)
 	while (str[j])
 	{
 		if (str[j] == ' ')
-			cub->map[i][j] = '1';
+			cub->map[i][j] = '.';
 		else
 			cub->map[i][j] = str[j];
 		j++;
