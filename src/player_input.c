@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:12:23 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/23 13:14:41 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	check_col(t_cub *cub, double x, double y)
 	if (!cub->bonus)
 		return (0);
 	if (x < 0 || y < 0 || y >= cub->mapsize[Y]
-		|| !cub->map[(int)y][(int)x] || cub->map[(int)y][(int)x] == '1')
+		|| (int)x > ft_strlen(cub->map[(int)y]))
+		return (0);
+	if (!cub->map[(int)y][(int)x] || cub->map[(int)y][(int)x] == '1')
 		return (1);
 	return (0);
 }

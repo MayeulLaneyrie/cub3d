@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 14:04:27 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/23 14:12:32 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_stock_map(char *str, t_cub *cub)
 	while (str[j])
 	{
 		if (str[j] == ' ')
-			cub->map[i][j] = '0'; // 1 ici avant mais change juste comment je pense la map
+			cub->map[i][j] = '.';
 		else
 			cub->map[i][j] = str[j];
 		j++;
@@ -53,14 +53,6 @@ int	stock_map(char *fichier, t_cub *cub)
 		free(str);
 	}
 	cub->map[cub->mapsize[Y]] = 0;
-	////////////////////////
-/*	int z = 0;
-	while (cub->map[z])
-	{
-		printf("%s\n", cub->map[z]);
-		z++;
-	}*/
-	////////////////////// 
 	pos_start(cub);
 	floodfill(cub, cub->pos[X] - 0.5, cub->pos[Y] - 0.5, 0);
 	close(fd);
@@ -72,14 +64,14 @@ int	checkchar(char *str, t_cub *cub)
 	int			i;
 	static int	j = 0;
 	static int	k = 0;
-	
+
 	i = 0;
 	if (!str[0])
 		k++;
 	while (str[i])
 	{
-		if (str[i] != '0' && str[i] != '1' && str[i] != ' '
-			&& str[i] != 'N' && str[i] != 'S' && str[i] != 'E' && str[i] != 'W' && !str[0])
+		if (str[i] != '0' && str[i] != '1' && str[i] != ' ' && str[i] != 'N'
+			&& str[i] != 'S' && str[i] != 'E' && str[i] != 'W' && !str[0])
 			return (0);
 		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 			j++;
