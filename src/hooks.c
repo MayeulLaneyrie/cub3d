@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:20:19 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/23 12:28:51 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,16 @@ int	key_hook(int x, t_cub *cub)
 	if (x == KEY_ESC && cub->bonus)
 	{
 		cub->bonus = 1 + (cub->bonus == 1);
-		if (cub->bonus == 1)
-			mlx_mouse_hide(cub->d->mlx, cub->d->win);
 		frame(cub);
 	}
 	return (0);
 }
+
+/*
+**	@33:
+**		if (cub->bonus == 1)
+**			mlx_mouse_hide(cub->d->mlx, cub->d->win);
+*/
 
 int	release_hook(int x, t_cub *cub)
 {

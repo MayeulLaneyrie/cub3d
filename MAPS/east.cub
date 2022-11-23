@@ -1,8 +1,8 @@
-NO         MAPS/turbolol.xpm
+NO         MAPS/mur_rouge.pm
 SO          MAPS/mc.xpm
 WE           MAPS/mur_bleu.xpm
 EA         MAPS/shamizi.xpm
-C             0,64,128
+C             0,0,0
 F     150,            100,100
 
 

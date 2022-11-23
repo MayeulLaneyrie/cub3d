@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:26:36 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/23 12:29:50 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,12 @@ void	draw_pause(t_cub *cub)
 	p.y2 = WIN_H;
 	p.cr1 = 0x60000000;
 	pcr_rect(cub->d, p);
-	mlx_mouse_show(cub->d->mlx, cub->d->win);
 }
+
+/*
+**	@92:
+**	mlx_mouse_show(cub->d->mlx, cub->d->win);
+*/
 
 void	draw_hud(t_cub *cub)
 {
