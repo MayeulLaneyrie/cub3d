@@ -6,16 +6,33 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 16:01:46 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/23 21:23:55 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-void	pause_text(t_cub *cub)
+void	text(t_cub *cub)
 {
-	mlx_string_put(cub->d->mlx, cub->d->win, WIN_W / 2 - 30, WIN_H / 2 + 12,
-		0xffffff, "PAUSE");
+	t_pcrparam	p;
+	static char	*txt[2] = {"PAUSE", "Press [ESC] to pause"};
+
+	if (!cub->bonus)
+		return ;
+	p.x2 = 2;
+	p.y2 = 2;
+	p.cr1 = 0xffffff;
+	p.cr2 = 0x000000;
+	p.x1 = WIN_W / 2 - 30;
+	p.y1 = WIN_H / 2 + 12;
+	p.s = txt[0];
+	if (cub->bonus > 1)
+		pcr_txt_shadow(cub->d, p);
+	p.x1 = 10;
+	p.y1 = WIN_H - 10;
+	p.s = txt[1];
+	if (cub->bonus && cub->d->frame < 40)
+		pcr_txt_shadow(cub->d, p);
 }
 
 int	frame(t_cub *cub)
@@ -42,7 +59,6 @@ int	frame(t_cub *cub)
 	}
 	draw_hud(cub);
 	pcr_display(cub->d);
-	if (cub->bonus > 1)
-		pause_text(cub);
+	text(cub);
 	return (0);
 }

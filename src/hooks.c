@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 12:28:51 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/23 21:27:40 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	key_hook(int x, t_cub *cub)
 	if (x == KEY_ESC && cub->bonus)
 	{
 		cub->bonus = 1 + (cub->bonus == 1);
+		if (cub->bonus == 1)
+			mouse(cub->d, 0);
 		frame(cub);
 	}
 	return (0);
