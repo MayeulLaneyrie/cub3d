@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 21:38:38 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/24 11:16:40 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define X 0
 # define Y 1
 
-//# define AZERTY
-//# define MOUSE_HIDE
+# define AZERTY
+# define MOUSE_HIDE
 
 # ifdef AZERTY
 #  define KEY_FWD 'z'

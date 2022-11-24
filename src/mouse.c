@@ -6,7 +6,7 @@
 /*   By: lnr <mayeul.lnr@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:57:28 by lnr               #+#    #+#             */
-/*   Updated: 2022/11/23 21:03:11 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/24 10:58:02 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	mouse(t_disp *d, int action)
 
 int	mouse(t_disp *d, int action)
 {
+	(void)d;
+	(void)action;
 	return (0);
 }
 
