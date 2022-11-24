@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 21:27:40 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/24 12:06:11 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int	key_hook(int x, t_cub *cub)
 			cub->key_buffer[i] = 1;
 	if (x == 'x' || (x == KEY_ESC && !cub->bonus))
 		mlx_loop_end(cub->d->mlx);
+	if (x == 'm')
+	{
+		cub->minimap = (1 - cub->minimap);
+		frame(cub);
+	}
 	if (x == KEY_ESC && cub->bonus)
 	{
 		cub->bonus = 1 + (cub->bonus == 1);

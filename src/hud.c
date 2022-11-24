@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 21:35:06 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/24 11:48:14 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,11 @@ void	draw_hud(t_cub *cub)
 		return ;
 	if (cub->bonus < 2)
 		draw_cursor(cub);
-	draw_map(cub);
-	draw_mc(cub);
-	draw_pause(cub);
+	else
+		draw_pause(cub);
+	if (cub->minimap)
+	{
+		draw_map(cub);
+		draw_mc(cub);
+	}
 }
