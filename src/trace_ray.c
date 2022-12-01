@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:36:56 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 22:35:57 by lnr              ###   ########.fr       */
+/*   Updated: 2022/12/01 13:04:38 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int	check_noclip(t_cub *cub, int mappos[2], double dd[3][2])
 {
 	int	out;
 
-	out = (mappos[Y] < 0
-			|| mappos[Y] > cub->mapsize[Y] - 1
-			|| mappos[X] < 0
-			|| mappos[X] > ft_strlen(cub->map[mappos[Y]]));
 	if ((mappos[Y] < 0 && dd[STEP][Y] < 0)
 		|| (mappos[Y] > cub->mapsize[Y] && dd[STEP][Y] > 0)
 		|| (mappos[X] < 0 && dd[STEP][X] < 0)
 		|| (mappos[X] > cub->mapsize[X] && dd[STEP][X] > 0))
 		return (-1);
+	out = (mappos[Y] < 0
+			|| mappos[Y] > cub->mapsize[Y] - 1
+			|| mappos[X] < 0
+			|| mappos[X] > ft_strlen(cub->map[mappos[Y]]));
 	return (out);
 }
 
