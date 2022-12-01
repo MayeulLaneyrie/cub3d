@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/24 11:31:56 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:27:57 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_hit
 typedef struct s_cub	t_cub;
 struct					s_cub
 {
+	int		flmap;
 	int		bonus;
 	int		update;
 	int		i;
