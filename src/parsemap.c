@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/12/01 13:46:07 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/12/01 15:23:23 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	checkchar(char *str, t_cub *cub)
 	while (str[i])
 	{
 		if (str[i] != '0' && str[i] != '1' && str[i] != ' ' && str[i] != 'N'
-			&& str[i] != 'S' && str[i] != 'E' && str[i] != 'W' && !str[0])
+			&& str[i] != 'S' && str[i] != 'E' && str[i] != 'W')
 			return (0);
 		if (str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
 			j++;
