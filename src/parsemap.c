@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:38:37 by shamizi           #+#    #+#             */
-/*   Updated: 2022/12/01 13:28:51 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/12/01 13:46:07 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	checkchar(char *str, t_cub *cub)
 void	ft_map(char *str, t_cub *cub)
 {
 	static int	nbligne = 0;
-	
 
 	if (str[0] == ' ' || str[0] == '1' || str[0] == '0')
 		cub->flmap = 1;
