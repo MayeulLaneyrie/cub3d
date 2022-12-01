@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/12/01 13:30:02 by mlaneyri         ###   ########.fr        #
+#    Updated: 2022/12/01 18:55:26 by mlaneyri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,23 +33,22 @@ SRCS =	src/error.c \
 		src/parsing2.c \
 		src/ft_init.c \
 		\
-		src/pcr/pcr_color_op.c \
-		src/pcr/pcr_init.c \
-		src/pcr/pcr_destroy.c \
-		src/pcr/pcr_line_fade.c \
-		src/pcr/pcr_pixel.c \
-		src/pcr/pcr_ops.c \
-		src/pcr/pcr_line.c \
-		src/pcr/pcr_vhline.c \
-		src/pcr/pcr_rect.c \
-		src/pcr/pcr_txt.c
+		pcr/pcr_init.c \
+		pcr/pcr_destroy.c \
+		pcr/pcr_line_fade.c \
+		pcr/pcr_pixel.c \
+		pcr/pcr_ops.c \
+		pcr/pcr_line.c \
+		pcr/pcr_vhline.c \
+		pcr/pcr_rect.c \
+		pcr/pcr_txt.c
 
 OBJS = $(SRCS:.c=.o) $(MANDA_SRCS:.c=.o)
 BONUS_OBJS = $(SRCS:.c=.o) $(BONUS_SRCS:.c=.o)
 
 CC = clang
 
-CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx_linux #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx_linux -Ipcr #-g -fsanitize=address
 
 MLX_FLAGS = -L ./mlx_linux -lm -lmlx -lXext -lX11
 
@@ -57,16 +56,18 @@ RM = rm -rf
 
 all: $(NAME)
 
-bonus: $(BONUS_OBJS)
-		make -C mlx_linux
+bonus: $(BONUS_OBJS) mlx
 		${CC} ${CFLAGS} -o ${NAME} ${BONUS_OBJS} ${MLX_FLAGS}
 
 %.o : %.c
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} ${INCLUDE}
 
-$(NAME): $(OBJS)
-		make -C mlx_linux
+$(NAME): $(OBJS) mlx
 		${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${MLX_FLAGS}
+
+mlx:
+	make -C mlx_linux
+
 clean: 
 	$(RM) $(OBJS) $(MANDA_OBJS) $(BONUS_OBJS)
 
