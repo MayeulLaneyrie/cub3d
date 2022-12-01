@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/24 12:00:22 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:27:45 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,33 +103,4 @@ int	check_cub(char *str, t_cub *cub)
 	else
 		ft_error("nom de fichier invalide\n", 24, cub);
 	return (0);
-}
-
-void	ft_init(t_cub *cub)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 7)
-		cub->key_buffer[i] = 0;
-	i = -1;
-	while (++i < 4)
-	{
-		cub->texpath[i] = NULL;
-		cub->texture[i] = NULL;
-		cub->pos[i / 2] = 0;
-		cub->or_cam[i / 2] = 0;
-		cub->or_plancam[i / 2] = 0;
-		cub->mapsize[i / 2] = 0;
-	}
-	cub->update = 0;
-	cub->i = 0;
-	cub->error = 0;
-	cub->fc = 0;
-	cub->f = -1;
-	cub->c = -1;
-	cub->map = NULL;
-	cub->minimap = 0;
-	cub->a = 0;
-	cub->d = NULL;
 }
