@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/12/01 13:27:57 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/12/01 13:33:46 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ struct					s_cub
 	int		i;
 	int		error;
 	int		fc;
+	int		flmap;
 	int		mapsize[2];
 	int		nbligne;
 	char	*texpath[8];
