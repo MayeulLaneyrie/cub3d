@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/22 13:37:22 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/24 11:31:56 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define Y 1
 
 //# define AZERTY
+//# define MOUSE_HIDE
 
 # ifdef AZERTY
 #  define KEY_FWD 'z'
@@ -94,7 +95,7 @@ struct					s_cub
 	int		f;
 	int		c;
 	char	**map;
-	int		flmap;
+	int		minimap;
 	double	pos[2];
 	double	a;
 	double	or_cam[2];
@@ -116,7 +117,7 @@ void	ft_map(char *str, t_cub *cub);
 int		check_cub(char *str, t_cub *cub);
 void	texture_check(t_cub *cub);
 void	ft_init(t_cub *cub);
-void	free_cub(t_cub *cub);
+int		free_cub(t_cub *cub);
 void	floodfill(t_cub *cub, int x, int y, int overflow);
 void	pos_start(t_cub *cub);
 void	ft_color(char **str, t_cub *cub);
@@ -143,6 +144,12 @@ int		key_hook(int x, t_cub *cub);
 int		release_hook(int x, t_cub *cub);
 int		mouse_motion_hook(int x, int y, t_cub *cub);
 int		loop_hook(t_cub *cub);
+
+/*
+**	mouse.c: -------------------------------------------------------------------
+*/
+
+int		mouse(t_disp *d, int action);
 
 /*
 **	player_input.c: ------------------------------------------------------------

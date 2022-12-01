@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 14:47:25 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/24 12:00:22 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	ft_init(t_cub *cub)
 	cub->f = -1;
 	cub->c = -1;
 	cub->map = NULL;
-	cub->flmap = 0;
+	cub->minimap = 0;
 	cub->a = 0;
 	cub->d = NULL;
 }

@@ -6,7 +6,7 @@
 #    By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 16:37:14 by shamizi           #+#    #+#              #
-#    Updated: 2022/11/22 16:53:19 by mlaneyri         ###   ########.fr        #
+#    Updated: 2022/11/23 21:21:59 by lnr              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS =	src/error.c \
 		src/frame.c \
 		src/hud.c \
 		src/hooks.c \
+		src/mouse.c \
 		src/player_input.c \
 		src/floodfill.c \
 		src/parsing2.c \
@@ -39,7 +40,8 @@ SRCS =	src/error.c \
 		src/pcr/pcr_ops.c \
 		src/pcr/pcr_line.c \
 		src/pcr/pcr_vhline.c \
-		src/pcr/pcr_rect.c
+		src/pcr/pcr_rect.c \
+		src/pcr/pcr_txt.c
 
 OBJS = $(SRCS:.c=.o) $(MANDA_SRCS:.c=.o)
 BONUS_OBJS = $(SRCS:.c=.o) $(BONUS_SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 14:13:35 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/11/24 11:48:14 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_map(t_cub *cub)
 				p.cr1 = 0xa0000000;
 			else
 				p.cr1 = 0x80ffffff;
-			if (cub->map[y][x] != '.')
+			if (cub->map[y][x] == ' ' || cub->map[y][x] == '1')
 				pcr_rect(cub->d, p);
 		}
 	}
@@ -87,6 +87,7 @@ void	draw_pause(t_cub *cub)
 	p.y2 = WIN_H;
 	p.cr1 = 0x60000000;
 	pcr_rect(cub->d, p);
+	mouse(cub->d, 1);
 }
 
 /*
@@ -98,8 +99,13 @@ void	draw_hud(t_cub *cub)
 {
 	if (!cub->bonus)
 		return ;
-	draw_cursor(cub);
-	draw_map(cub);
-	draw_mc(cub);
-	draw_pause(cub);
+	if (cub->bonus < 2)
+		draw_cursor(cub);
+	else
+		draw_pause(cub);
+	if (cub->minimap)
+	{
+		draw_map(cub);
+		draw_mc(cub);
+	}
 }

@@ -6,11 +6,12 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 22:18:17 by lnr              ###   ########.fr       */
+/*   Updated: 2022/11/24 11:26:13 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+#include "mlx_int.h"
 
 int	main(int argc, char **argv)
 {
