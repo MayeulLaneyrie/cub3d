@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:01:43 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 14:09:47 by shamizi          ###   ########.fr       */
+/*   Updated: 2022/12/01 12:55:35 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	floodfill(t_cub *cub, int x, int y, int overflow)
 {
-	if (!cub->map[y])
+	if (!cub->map[y]) 
 		ft_error("wrong map\n", 10, cub);
+	if (x > ft_strlen(cub->map[y]))
+		ft_error("Wrong map\n", 10, cub);
 	if (x < 0 || y < 0 || !cub->map[y][x] || cub->map[y][x] == '.')
 		ft_error("wrong map\n", 10, cub);
 	if (overflow > 30000)
