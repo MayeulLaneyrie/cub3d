@@ -2,8 +2,8 @@ NO MAPS/texture/mur_bleu.xpm
 SO MAPS/texture/mur_bleu.xpm
 WE MAPS/texture/mur_jaune.xpm
 EA MAPS/texture/mur_jaune.xpm
-C 128,200,255
-F 64, 200,  60
+C 128,200 , 255
+F 64, 200,  60 42
 
 1111111
 1000001

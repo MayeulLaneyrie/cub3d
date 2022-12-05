@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:05:33 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/21 20:42:15 by lnr              ###   ########.fr       */
+/*   Updated: 2022/12/05 18:13:54 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ void	ft_check_fc(char *str, t_cub *cub)
 		cub->error = 1;
 }
 
+static int	check_more(char c, t_cub *cub)
+{
+	if (c)
+		cub->error = 2;
+	return (0);
+}
+
 int	ft_fc(char *str, t_cub *cub)
 {
 	int	check;
@@ -48,7 +55,7 @@ int	ft_fc(char *str, t_cub *cub)
 	n = 24;
 	cub->fc = 0;
 	ft_check_fc(str, cub);
-	while (str[cub->i] == ' ' || str[cub->i] == ',')
+	while ((str[cub->i] == ' ' || str[cub->i] == ',') && n > 0)
 	{
 		check = 0;
 		cub->i++;
@@ -65,6 +72,7 @@ int	ft_fc(char *str, t_cub *cub)
 		if (check > 255 || check < 0)
 			cub->error = 2;
 	}
+	check_more(str[cub->i], cub);
 	return (cub->fc);
 }
 

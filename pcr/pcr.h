@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/12/01 18:35:19 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:27:18 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_disp
 {
 	int		frame;
 	int		w;
-	int		h; 
+	int		h;
 	void	*mlx;
 	void	*win;
 	t_image	*img[2];
