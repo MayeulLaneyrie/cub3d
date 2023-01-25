@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 20:35:59 by lnr              ###   ########.fr       */
+/*   Updated: 2023/01/25 18:04:44 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,29 @@ void	draw_hitline(t_cub *cub, t_hit hit, int x, t_image *img)
 
 int	draw_hit(t_cub *cub, t_hit hit, int x)
 {
-	t_pcrparam	p;
-
-	(void)hit;
-	p.x1 = x;
-	p.y1 = 0;
-	p.y2 = WIN_H / 2 - 1;
-	p.cr1 = cub->c;
-	pcr_vline(cub->d, p);
-	p.y1 = WIN_H / 2;
-	p.y2 = WIN_H - 1;
-	p.cr1 = cub->f;
-	pcr_vline(cub->d, p);
+	pcr_vline(cub->d, (t_pcr){
+		.x1 = x,
+		.y1 = 0,
+		.y2 = WIN_H / 2 - 1,
+		.cr1 = cub->c
+	});
+	pcr_vline(cub->d, (t_pcr){
+		.x1 = x,
+		.y1 = WIN_H / 2,
+		.y2 = WIN_H - 1,
+		.cr1 = cub->f
+	});
 	if (hit.dist > 0)
 		draw_hitline(cub, hit, x, cub->texture[hit.face]);
 	return (0);
 }
+
+/*
+	p.x1 = x;
+	p.y1 = 0;
+	p.y2 = WIN_H / 2 - 1;
+	p.cr1 = cub->c;
+*/
 
 /*
 **	distance du point d'impact, variation de couleur et + distance proche

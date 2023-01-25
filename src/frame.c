@@ -6,13 +6,13 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/24 12:14:10 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:48:14 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-void	norme(t_cub *cub, t_pcrparam p)
+void	norme(t_cub *cub, t_pcr p)
 {
 	static char	*txt[2] = {"Press [ESC] to pause",
 		"Press [M] to display minimap"};
@@ -35,7 +35,7 @@ void	norme(t_cub *cub, t_pcrparam p)
 
 void	text(t_cub *cub)
 {
-	t_pcrparam	p;
+	t_pcr		p;
 	static char	*txt = "PAUSE";
 
 	if (!cub->bonus)

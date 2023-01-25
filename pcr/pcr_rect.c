@@ -6,13 +6,13 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:56:18 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/21 17:52:49 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:40:26 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pcr.h"
 
-int	pcr_rect(t_disp *d, t_pcrparam p)
+int	pcr_rect(t_disp *d, t_pcr p)
 {
 	int	x;
 	int	y;

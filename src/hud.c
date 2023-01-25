@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/24 11:48:14 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:48:34 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_mc(t_cub *cub)
 {
-	t_pcrparam	p;
+	t_pcr	p;
 
 	p.x1 = 10 + 10 * cub->pos[X] - 3;
 	p.y1 = 10 + 10 * cub->pos[Y] - 3;
@@ -34,9 +34,9 @@ void	draw_mc(t_cub *cub)
 
 void	draw_map(t_cub *cub)
 {
-	t_pcrparam	p;
-	int			x;
-	int			y;
+	t_pcr	p;
+	int		x;
+	int		y;
 
 	p.x2 = 10;
 	p.y2 = 10;
@@ -61,7 +61,7 @@ void	draw_map(t_cub *cub)
 
 void	draw_cursor(t_cub *cub)
 {
-	t_pcrparam	p;
+	t_pcr	p;
 
 	p.cr1 = 0xffffff;
 	p.x1 = WIN_W / 2;
@@ -76,7 +76,7 @@ void	draw_cursor(t_cub *cub)
 
 void	draw_pause(t_cub *cub)
 {
-	t_pcrparam	p;
+	t_pcr	p;
 
 	if (cub->bonus < 2)
 		return ;

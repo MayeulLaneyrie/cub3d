@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:39:27 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/12/05 17:27:18 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:39:50 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@
 **
 **	In order to conform to the commands of the most holy **NORM** regarding the
 **	number of parameters a function can take, all drawing function take a
-**	't_pcrparam' as parameter. This structure will contain all the values
+**	't_pcr' as parameter. This structure will contain all the values
 **	required by the function. Here's a quick example :
 **
 **		t_disp		*d;
-**		t_pcrparam	p;
+**		t_pcr	p;
 **
 **		d = pcr_init(1280, 720, "Hello, world!");
 **		if (!d)
@@ -105,7 +105,7 @@ typedef struct s_disp
 
 /*
 **	The meaning of all those is pretty much contextual and may vary according to
-**	the function you're giving a t_pcrparam as parameter, please refer to the
+**	the function you're giving a t_pcr as parameter, please refer to the
 **	specific documentation of each drawing function. Not all members will be
 **	systematically used.
 **
@@ -115,7 +115,7 @@ typedef struct s_disp
 **		- cr1 & cr2 will represent colors,
 **		- *s will represent a string to be displayed.
 */
-typedef struct s_pcrparam
+typedef struct s_pcr
 {
 	int		x1;
 	int		y1;
@@ -124,7 +124,7 @@ typedef struct s_pcrparam
 	int		cr1;
 	int		cr2;
 	char	*s;
-}	t_pcrparam;
+}	t_pcr;
 
 /*
 **	pcr_init.c: ----------------------------------------------------------------
@@ -210,7 +210,7 @@ int		pcr_pixel_alpha(t_disp *d, int x, int y, int color);
 **		- (x2, y2): width & height,
 **		- cr1: the color of the rectangle.
 */
-int		pcr_rect(t_disp *d, t_pcrparam p);
+int		pcr_rect(t_disp *d, t_pcr p);
 
 /*
 **	pcr_txt.c: -----------------------------------------------------------------
@@ -225,8 +225,8 @@ int		pcr_rect(t_disp *d, t_pcrparam p);
 **	No documentation will be provided on this matter, by lack of time.
 **	Once again, sorry :'-(
 */
-int		pcr_txt(t_disp *d, t_pcrparam p);
-int		pcr_txt_shadow(t_disp *d, t_pcrparam p);
+int		pcr_txt(t_disp *d, t_pcr p);
+int		pcr_txt_shadow(t_disp *d, t_pcr p);
 
 /*
 **	pcr_line.h:	----------------------------------------------------------------
@@ -238,18 +238,18 @@ int		pcr_txt_shadow(t_disp *d, t_pcrparam p);
 **		- (x1, y2)): ending point (included),
 **		- cr1: color.
 */
-int		pcr_line(t_disp *d, t_pcrparam p);
+int		pcr_line(t_disp *d, t_pcr p);
 
 /*
 **	Does the same as pcr_line, but the line will be faded between two colors
 **	defined by cr1 & cr2. Much useful for a stylish fdf.
 */
-int		pcr_linefade(t_disp *d, t_pcrparam p);
+int		pcr_linefade(t_disp *d, t_pcr p);
 
 /*
 **	pcr_vhline.h: --------------------------------------------------------------
 */
-int		pcr_vline(t_disp *d, t_pcrparam p);
-int		pcr_hline(t_disp *d, t_pcrparam p);
+int		pcr_vline(t_disp *d, t_pcr p);
+int		pcr_hline(t_disp *d, t_pcr p);
 
 #endif

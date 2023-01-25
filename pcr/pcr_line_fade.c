@@ -6,13 +6,13 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 12:02:43 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:40:14 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pcr.h"
 
-static int	y_plus(t_disp *d, t_pcrparam p, int dx, int dy)
+static int	y_plus(t_disp *d, t_pcr p, int dx, int dy)
 {
 	int	t;
 
@@ -23,7 +23,7 @@ static int	y_plus(t_disp *d, t_pcrparam p, int dx, int dy)
 	return (0);
 }
 
-static int	y_minus(t_disp *d, t_pcrparam p, int dx, int dy)
+static int	y_minus(t_disp *d, t_pcr p, int dx, int dy)
 {
 	int	t;
 
@@ -34,7 +34,7 @@ static int	y_minus(t_disp *d, t_pcrparam p, int dx, int dy)
 	return (0);
 }
 
-static int	x_plus(t_disp *d, t_pcrparam p, int dx, int dy)
+static int	x_plus(t_disp *d, t_pcr p, int dx, int dy)
 {
 	int	t;
 
@@ -45,7 +45,7 @@ static int	x_plus(t_disp *d, t_pcrparam p, int dx, int dy)
 	return (0);
 }
 
-static int	x_minus(t_disp *d, t_pcrparam p, int dx, int dy)
+static int	x_minus(t_disp *d, t_pcr p, int dx, int dy)
 {
 	int	t;
 
@@ -56,7 +56,7 @@ static int	x_minus(t_disp *d, t_pcrparam p, int dx, int dy)
 	return (0);
 }
 
-int	pcr_linefade(t_disp *d, t_pcrparam p)
+int	pcr_linefade(t_disp *d, t_pcr p)
 {
 	int	dx;
 	int	dy;

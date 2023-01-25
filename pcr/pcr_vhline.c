@@ -6,13 +6,13 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2022/11/16 21:37:34 by lnr              ###   ########.fr       */
+/*   Updated: 2023/01/25 17:40:33 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pcr.h"
 
-int	pcr_vline(t_disp *d, t_pcrparam p)
+int	pcr_vline(t_disp *d, t_pcr p)
 {
 	int	t;
 
@@ -22,7 +22,7 @@ int	pcr_vline(t_disp *d, t_pcrparam p)
 	return (0);
 }
 
-int	pcr_hline(t_disp *d, t_pcrparam p)
+int	pcr_hline(t_disp *d, t_pcr p)
 {
 	int	t;
 
