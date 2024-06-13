@@ -3,8 +3,8 @@
 ## by Mayeul Laneyrie & Said Hamizi @42Paris
 
 This is a tiny raycasting demo, based on the 42 school minilibx library (which
-btw is a useless piece of s@#$ that should have gone away from usage in the
-school cursus, but nevermind...).
+is a not-so-good piece of software which usage is mandatory for students at 42,
+which is quite sad, but whatever).
 
 ## Usage
 
