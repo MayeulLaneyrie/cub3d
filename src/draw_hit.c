@@ -6,7 +6,7 @@
 /*   By: mlaneyri <mlaneyri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:38:03 by mlaneyri          #+#    #+#             */
-/*   Updated: 2023/01/25 18:04:44 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:21:38 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,40 @@
 void	draw_hitline(t_cub *cub, t_hit hit, int x, t_image *img)
 {
 	int				start;
-	int				lineheight;
+	int				line_h;
 	static double	vfov = PI * FOV * WIN_H / (180 * WIN_W);
 	int				i;
 
-	lineheight = (int)(WIN_H / (hit.dist * 2 * tan(vfov / 2)));
-	start = (WIN_H - lineheight) / 2;
-	i = -1 - start * (start < 0);
-	while (++i < lineheight + start * (start < 0))
+	line_h = (int)(WIN_H / (hit.dist * 2 * tan(vfov / 2)));
+	start = (WIN_H - line_h) / 2;
+	i = cub->d->frame % (V_IL * H_IL) / H_IL;
+	while (i < WIN_H)
 	{
-		if (start + i >= 0 || start + i < WIN_H)
-			pcr_pixel(cub->d, x, start + i,
+		if (i >= start && i < WIN_H - start)
+			pcr_pixel(cub->d, x, i,
 				pcr_getpix(img, hit.texx * img->px_w,
-					img->px_h * i / lineheight));
+					img->px_h * (i - start - 1) / line_h));
+		else if (i < start)
+			pcr_pixel(cub->d, x, i, cub->c);
+		else
+			pcr_pixel(cub->d, x, i, cub->f);
+		i += V_IL;
 	}
 }
 
 int	draw_hit(t_cub *cub, t_hit hit, int x)
 {
-	pcr_vline(cub->d, (t_pcr){
-		.x1 = x,
-		.y1 = 0,
-		.y2 = WIN_H / 2 - 1,
-		.cr1 = cub->c
-	});
-	pcr_vline(cub->d, (t_pcr){
-		.x1 = x,
-		.y1 = WIN_H / 2,
-		.y2 = WIN_H - 1,
-		.cr1 = cub->f
-	});
 	if (hit.dist > 0)
 		draw_hitline(cub, hit, x, cub->texture[hit.face]);
+	else
+	{
+		pcr_vline(cub->d,
+			(t_pcr){.x1 = x, .y1 = 0, .y2 = (WIN_H / 2 - 1), .cr1 = cub->c});
+		pcr_vline(cub->d,
+			(t_pcr){.x1 = x, .y1 = (WIN_H / 2), .y2 = (WIN_H - 1), .cr1 = cub->f});
+	}
 	return (0);
 }
-
-/*
-	p.x1 = x;
-	p.y1 = 0;
-	p.y2 = WIN_H / 2 - 1;
-	p.cr1 = cub->c;
-*/
 
 /*
 **	distance du point d'impact, variation de couleur et + distance proche

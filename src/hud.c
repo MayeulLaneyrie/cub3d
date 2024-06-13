@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2023/01/25 17:48:34 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:22:28 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,26 @@ void	draw_cursor(t_cub *cub)
 
 void	draw_pause(t_cub *cub)
 {
-	t_pcr	p;
+	int	i;
 
 	if (cub->bonus < 2)
 		return ;
 	cub->bonus = 3;
+	i = cub->d->frame % V_IL;
+	while (i < WIN_H)
+	{
+		pcr_rect(cub->d,
+			(t_pcr){.x1 = 0, .y1 = i, .x2 = WIN_W, .y2 = i, .cr1 = 0x60000000});
+		i += V_IL;
+	}
+	/*
 	p.x1 = 0;
 	p.y1 = 0;
 	p.x2 = WIN_W;
 	p.y2 = WIN_H;
 	p.cr1 = 0x60000000;
 	pcr_rect(cub->d, p);
+	*/
 	mouse(cub->d, 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2023/01/25 17:48:14 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:21:57 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	frame(t_cub *cub)
 	cub->or_cam[Y] = -sin(cub->a);
 	cub->or_plancam[X] = -cub->or_cam[Y] * tan(PI * FOV / 360);
 	cub->or_plancam[Y] = cub->or_cam[X] * tan(PI * FOV / 360);
-	x = 0;
+	x = cub->d->frame % H_IL;
 	while (x < WIN_W)
 	{
 		ray[X] = cub->or_cam[X] + (-1.0 + 2.0 * x / WIN_W) * cub->or_plancam[0];
@@ -70,7 +70,7 @@ int	frame(t_cub *cub)
 		if (!trace_ray(cub, ray, &hit))
 			hit.dist = -1;
 		draw_hit(cub, hit, x);
-		x++;
+		x += H_IL;
 	}
 	draw_hud(cub);
 	pcr_display(cub->d);

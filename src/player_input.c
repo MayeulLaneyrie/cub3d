@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/23 13:14:41 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:05:33 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@ int	check_col(t_cub *cub, double x, double y)
 
 void	init_step(double *or_cam, double step[4][2], int sprint)
 {
-	step[0][0] = (1 + 0.5 * sprint) * or_cam[X] / 12;
-	step[0][1] = (1 + 0.5 * sprint) * or_cam[Y] / 12;
-	step[1][0] = -or_cam[X] / 12;
-	step[1][1] = -or_cam[Y] / 12;
-	step[2][0] = or_cam[Y] / 21;
-	step[2][1] = -or_cam[X] / 21;
-	step[3][0] = -or_cam[Y] / 21;
-	step[3][1] = or_cam[X] / 21;
+	int def;
+   
+	def = 64 * 2;
+	step[0][0] = (1 + 0.5 * sprint) * or_cam[X] / def;
+	step[0][1] = (1 + 0.5 * sprint) * or_cam[Y] / def;
+	step[1][0] = -or_cam[X] / def;
+	step[1][1] = -or_cam[Y] / def;
+	step[2][0] = or_cam[Y] / (def * 21 / 12);
+	step[2][1] = -or_cam[X] / (def * 21 / 12);
+	step[3][0] = -or_cam[Y] / (def * 21 / 12);
+	step[3][1] = or_cam[X] / (def * 21 / 12);
 }
 
 int	do_inputs(t_cub *cub)
@@ -46,7 +49,7 @@ int	do_inputs(t_cub *cub)
 		return (0);
 	init_step(cub->or_cam, step, cub->key_buffer[IDX_SPR]);
 	ret = (cub->key_buffer[IDX_RTL] || cub->key_buffer[IDX_RTR]);
-	cub->a += PI / 100 * (cub->key_buffer[IDX_RTL] - cub->key_buffer[IDX_RTR]);
+	cub->a += PI / (260 * 2) * (cub->key_buffer[IDX_RTL] - cub->key_buffer[IDX_RTR]);
 	i = IDX_FWD - 1;
 	while (++i <= IDX_RSD)
 	{

@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:47:24 by shamizi           #+#    #+#             */
-/*   Updated: 2022/11/24 12:06:11 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:21:11 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	mouse_motion_hook(int x, int y, t_cub *cub)
 	if (x == WIN_W / 2 || cub->bonus > 1)
 		return (0);
 	if (not_first > 5)
-		cub->a += (WIN_W / 2 - x) * PI / 6000;
+		cub->a += (WIN_W / 2 - x) * PI / 4000;
 	else
 		not_first++;
 	mlx_mouse_move(cub->d->mlx, cub->d->win, WIN_W / 2, WIN_H / 2);
@@ -84,7 +84,7 @@ int	loop_hook(t_cub *cub)
 {
 	if (do_inputs(cub))
 		frame(cub);
-	else if (cub->update)
+	else if (1 || cub->update)
 	{
 		frame(cub);
 		cub->update = 0;
