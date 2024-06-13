@@ -45,8 +45,8 @@ is required).
 
 ## Controls
 
-[W/A/S/D] to move (sorry for AZERTY keyboard users, I quite didn't implemented
+- [W/A/S/D] to move (sorry for AZERTY keyboard users, I quite didn't implemented
 keyboard configuration...)
-[TAB] to sprint
-[M] toggle minimap
-[X] close window and leave
+- [TAB] to sprint
+- [M] toggle minimap
+- [X] close window and leave
