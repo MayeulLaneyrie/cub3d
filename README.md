@@ -1,6 +1,6 @@
 # CUB3D
 
-## by Mayeul Laneyrie & Saïd Hamizi @42Paris
+## by Mayeul Laneyrie & Said Hamizi @42Paris
 
 This is a tiny raycasting demo, based on the 42 school minilibx library (which
 btw is a useless piece of s@#$ that should have gone away from usage in the
