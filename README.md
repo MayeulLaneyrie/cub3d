@@ -50,3 +50,11 @@ keyboard configuration...)
 - `[tab]` to sprint
 - `[m]` toggle minimap
 - `[x]` close window and leave
+
+## Concerning MiniLibX (mlx)
+
+This piece of crappy code is an almost 30 years old ancient relic of old
+epitech. It relies directly on the Xlib.
+Trying to use it in a reliable manner is a challenge of itself. 42 has made its
+student use it for its entire history now, and I'm afraid it will stay so for
+many eons to come. Aaah.
