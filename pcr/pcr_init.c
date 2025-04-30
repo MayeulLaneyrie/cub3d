@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:33:07 by mlaneyri          #+#    #+#             */
-/*   Updated: 2023/01/25 20:29:55 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:36:55 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,16 @@ t_disp	*pcr_init_disp(int w, int h, char *s)
 
 int	pcr_display(t_disp *d)
 {
-	//int				y;
-	//int				x;
-	//unsigned char	*dst;
+	int				i;
+	unsigned char	*dst;
 
-	mlx_put_image_to_window(d->mlx, d->win, d->img[0 * d->frame % 2]->img, 0, 0);
+	mlx_put_image_to_window(d->mlx, d->win, d->img[d->frame % 2]->img, 0, 0);
 	d->frame++;
-	/*
-	y = (d->frame + 1) % 2;
-	while (y < d->h)
-	{
-		x = -1;
-		while (++x < d->w)
-			pcr_pixel(d, x, y, pcr_getpix(d->img[(d->frame - 1) % 2], x, y));
-		y += 2;
-	}
-	*/
-	/*
+	i = -1;
 	while (++i < d->w * d->h)
 	{
-		dst = d->img[d->frame + 1 % 2]->addr + i * d->img[d->frame % 2]->opp;
-		*(unsigned long *)dst = ;
+		dst = d->img[d->frame % 2]->addr + i * d->img[d->frame % 2]->opp;
+		*(unsigned long *)dst = 0;
 	}
-	*/
 	return (0);
 }

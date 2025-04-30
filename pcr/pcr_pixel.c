@@ -6,7 +6,7 @@
 /*   By: mlaneyri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:34:23 by mlaneyri          #+#    #+#             */
-/*   Updated: 2023/01/25 19:22:15 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:44:17 by lnr              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ int	pcr_getpix(t_image *img, int x, int y)
 int	pcr_pixel(t_disp *d, int x, int y, int cr)
 {
 	unsigned char	*dst;
+	unsigned char	sw;
 
 	if (x < 0 || y < 0 || x >= d->w || y >= d->h)
 		return (-1);
-	dst = d->img[0]->addr + y * d->img[0]->w + x * d->img[0]->opp;
-	if (!d->img[0]->endn)
+	sw = d->frame % 2;
+	dst = d->img[sw]->addr + y * d->img[sw]->w + x * d->img[sw]->opp;
+	if (!d->img[sw]->endn)
 		*(unsigned int *)dst = cr;
 	else
 	{
@@ -54,13 +56,15 @@ int	pcr_pixel(t_disp *d, int x, int y, int cr)
 int	pcr_pixel_alpha(t_disp *d, int x, int y, int cr)
 {
 	unsigned char	*dst;
+	unsigned char	sw;
 	unsigned char	alpha;
 
 	if (x < 0 || y < 0 || x >= d->w || y >= d->h)
 		return (-1);
-	dst = d->img[0]->addr + y * d->img[0]->w + x * d->img[0]->opp;
+	sw = d->frame % 2;
+	dst = d->img[sw]->addr + y * d->img[sw]->w + x * d->img[sw]->opp;
 	alpha = cr >> 24;
-	if (!d->img[0]->endn)
+	if (!d->img[sw]->endn)
 	{
 		dst[2] = dst[2] * alpha / 256 + (cr >> 16 & 0xff) * (256 - alpha) / 256;
 		dst[1] = dst[1] * alpha / 256 + (cr >> 8 & 0xff) * (256 - alpha) / 256;

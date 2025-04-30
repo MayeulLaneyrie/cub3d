@@ -6,7 +6,7 @@
 /*   By: shamizi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 12:55:18 by shamizi           #+#    #+#             */
-/*   Updated: 2023/01/25 20:30:49 by mlaneyri         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:35:04 by mlaneyri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@
 # define WIN_H 720
 # define WIN_W 1280
 
-# define V_IL 1
-# define H_IL 1
-
 # define FOV 90
 # define PI 3.14159265359
 
@@ -40,7 +37,7 @@
 # define Y 1
 
 //# define AZERTY
-# define MOUSE_HIDE
+//# define MOUSE_HIDE
 
 # ifdef AZERTY
 #  define KEY_FWD 'z'

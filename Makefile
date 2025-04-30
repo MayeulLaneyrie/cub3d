@@ -46,7 +46,7 @@ SRCS =	src/error.c \
 OBJS = $(SRCS:.c=.o) $(MANDA_SRCS:.c=.o)
 BONUS_OBJS = $(SRCS:.c=.o) $(BONUS_SRCS:.c=.o)
 
-CC = cc
+CC = clang
 
 CFLAGS = -Wall -Wextra -Werror -Iinclude -Imlx_linux -Ipcr #-g -fsanitize=address
 
