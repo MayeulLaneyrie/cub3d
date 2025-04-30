@@ -20,12 +20,12 @@ int	main(int argc, char **argv)
 		return (printf("Usage: ./cub3D FILE\n") - 1);
 	ft_init(&cub);
 	check_cub(argv[1], &cub);
-	cub.d = pcr_init_disp(WIN_W, WIN_H, "Cum3D");
+	cub.d = pcr_init_disp(WIN_W, WIN_H, "Cub3D");
 	if (!cub.d)
 		return (free_cub(&cub) - 2);
 	cub.bonus = 1;
 	texture_check(&cub);
-	mlx_set_font(cub.d->mlx, cub.d->win, "12x24");
+	mlx_set_font(cub.d->mlx, cub.d->win, "*");
 	mlx_hook(cub.d->win, 17, 0L, &destroy_hook, cub.d);
 	mlx_hook(cub.d->win, 12, 1L << 15, &frame, &cub);
 	mlx_hook(cub.d->win, 2, 1L << 0, &key_hook, &cub);

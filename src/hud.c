@@ -88,14 +88,13 @@ void	draw_pause(t_cub *cub)
 			(t_pcr){.x1 = 0, .y1 = i, .x2 = WIN_W, .y2 = i, .cr1 = 0x60000000});
 		i += V_IL;
 	}
-	/*
+	t_pcr p;
 	p.x1 = 0;
 	p.y1 = 0;
 	p.x2 = WIN_W;
 	p.y2 = WIN_H;
 	p.cr1 = 0x60000000;
 	pcr_rect(cub->d, p);
-	*/
 	mouse(cub->d, 1);
 }
 

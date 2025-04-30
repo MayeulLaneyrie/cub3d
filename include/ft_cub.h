@@ -28,8 +28,8 @@
 # define WIN_H 720
 # define WIN_W 1280
 
-# define V_IL 2
-# define H_IL 3
+# define V_IL 1
+# define H_IL 1
 
 # define FOV 90
 # define PI 3.14159265359
