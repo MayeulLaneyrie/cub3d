@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		return (printf("Usage: ./cub3D FILE\n") - 1);
 	ft_init(&cub);
 	check_cub(argv[1], &cub);
-	cub.d = pcr_init_disp(WIN_W, WIN_H, "Cum3D");
+	cub.d = pcr_init_disp(WIN_W, WIN_H, "Cub3D");
 	if (!cub.d)
 	{
 		free_cub(&cub);
